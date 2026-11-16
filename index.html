@@ -4,208 +4,410 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080d19">
-<title>VELTRIX | Think Beyond Limits</title>
+<meta name="theme-color" content="#080b18">
+<meta name="description" content="VELTRIX — Süni intellekt, kreativ dizayn və rəqəmsal texnologiyalar dünyası.">
+<title>VELTRIX — Think Beyond Limits</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
- font-family:Arial,sans-serif;
- background:#080d19;color:#f4f7ff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-header{
- display:flex;justify-content:space-between;
- align-items:center;padding:20px 7%;
- border-bottom:1px solid #202b40;
- position:sticky;top:0;background:#080d19;
- z-index:10;
+
+html {
+  scroll-behavior: smooth;
 }
-.logo{font-size:27px;font-weight:900;letter-spacing:3px}
-.logo span{color:#398bff}
-nav{display:flex;gap:22px}
-nav a{color:#b9c5d9;text-decoration:none;font-size:14px}
-nav a:hover{color:#398bff}
-.hero{
- min-height:510px;padding:100px 8%;
- display:flex;flex-direction:column;
- justify-content:center;align-items:center;text-align:center;
- background:radial-gradient(ellipse at center,#12376b 0%,#080d19 65%);
+
+body {
+  font-family: Arial, sans-serif;
+  background: #080b18;
+  color: #f5f7ff;
+  line-height: 1.6;
 }
-.tag{
- color:#5da4ff;border:1px solid #28538c;
- padding:8px 15px;border-radius:30px;
- font-size:12px;letter-spacing:2px;
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
-h1{font-size:clamp(43px,8vw,76px);margin:25px 0 15px}
-h1 span{color:#438fff}
-.hero p{color:#aebbd0;max-width:550px;line-height:1.8}
-.btn{
- display:inline-block;margin-top:28px;
- padding:14px 27px;border-radius:9px;
- background:#287bea;color:white;
- text-decoration:none;font-weight:bold;
- border:none;cursor:pointer;
+
+header {
+  width: 100%;
+  padding: 18px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(8,11,24,0.94);
+  border-bottom: 1px solid #202945;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(12px);
 }
-.btn:hover{background:#4594ff}
-section{padding:75px 7%}
-.heading{text-align:center;margin-bottom:40px}
-.heading h2{font-size:32px;margin-bottom:12px}
-.heading p{color:#93a3ba}
-.cards{
- display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
- gap:20px;max-width:1100px;margin:auto;
+
+.logo {
+  font-size: 25px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: #fff;
 }
-.card{
- background:#101a2b;border:1px solid #263752;
- border-radius:15px;padding:27px;
- transition:.25s;
+
+.logo span {
+  color: #6585ff;
 }
-.card:hover{transform:translateY(-5px);border-color:#398bff}
-.icon{font-size:34px;margin-bottom:20px}
-.card h3{font-size:21px;margin-bottom:12px}
-.card p{color:#aab8cc;line-height:1.7;font-size:14px}
-.card a{display:inline-block;margin-top:20px;color:#65a7ff;text-decoration:none}
-.label{
- display:inline-block;margin-top:15px;
- color:#78b5ff;font-size:11px;
- background:#142b49;padding:6px 10px;border-radius:20px;
+
+nav {
+  display: flex;
+  gap: 25px;
+  align-items: center;
 }
-.about{
- text-align:center;background:#0c1423;
+
+nav a {
+  color: #b8c1da;
+  font-size: 14px;
+  transition: 0.3s;
 }
-.about p{max-width:650px;margin:15px auto;color:#aab8cc;line-height:1.9}
-footer{
- padding:35px 7%;text-align:center;
- border-top:1px solid #26334a;color:#8291a8;
+
+nav a:hover {
+  color: #7594ff;
 }
-footer strong{color:#fff;letter-spacing:3px}
-@media(max-width:650px){
- header{padding:17px 5%;flex-wrap:wrap;gap:15px}
- nav{width:100%;gap:17px;overflow-x:auto;padding-bottom:5px}
- nav a{white-space:nowrap;font-size:12px}
- section{padding:55px 5%}
- .hero{min-height:440px;padding:70px 6%}
+
+.menu-btn {
+  display: none;
+  border: 1px solid #354267;
+  background: #111831;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.hero {
+  min-height: 590px;
+  padding: 100px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 20%, #1a2e67 0%, transparent 55%),
+    linear-gradient(145deg, #080b18, #101832);
+}
+
+.hero-content {
+  max-width: 850px;
+}
+
+.tag {
+  display: inline-block;
+  padding: 8px 17px;
+  border: 1px solid #4059a0;
+  border-radius: 30px;
+  color: #a9bbff;
+  font-size: 13px;
+  margin-bottom: 25px;
+  background: rgba(73,105,210,0.10);
+}
+
+.hero h1 {
+  font-size: clamp(42px, 8vw, 76px);
+  line-height: 1.12;
+  font-weight: 900;
+  letter-spacing: -2px;
+}
+
+.hero h1 span {
+  color: #7594ff;
+  text-shadow: 0 0 35px rgba(83,119,255,0.35);
+}
+
+.hero p {
+  color: #aeb9d3;
+  font-size: 17px;
+  max-width: 620px;
+  margin: 25px auto 32px;
+}
+
+.primary-btn {
+  display: inline-block;
+  background: linear-gradient(100deg, #4269ee, #8159ed);
+  color: white;
+  padding: 14px 27px;
+  border-radius: 9px;
+  font-weight: bold;
+  box-shadow: 0 8px 30px rgba(76,103,240,0.25);
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 35px rgba(76,103,240,0.4);
+}
+
+section {
+  padding: 85px 8%;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 45px;
+}
+
+.section-heading h2 {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+.section-heading p {
+  color: #98a5c3;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.card {
+  background: linear-gradient(145deg, #151e38, #101629);
+  border: 1px solid #263456;
+  padding: 28px 23px;
+  border-radius: 16px;
+  transition: 0.3s;
+  min-height: 245px;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  border-color: #6385ff;
+  box-shadow: 0 12px 35px rgba(37,75,170,0.15);
+}
+
+.card-icon {
+  font-size: 32px;
+  margin-bottom: 17px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #a4afc8;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.card a {
+  color: #8da6ff;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.status {
+  display: inline-block;
+  color: #aebcff;
+  background: #202e55;
+  border-radius: 20px;
+  padding: 5px 10px;
+  font-size: 11px;
+}
+
+.about {
+  background: #0d1325;
+  text-align: center;
+}
+
+.about-content {
+  max-width: 750px;
+  margin: auto;
+}
+
+.about-content p {
+  color: #aab5ce;
+  margin-top: 17px;
+}
+
+footer {
+  text-align: center;
+  padding: 35px 15px;
+  background: #070a14;
+  border-top: 1px solid #202945;
+  color: #8793af;
+  font-size: 13px;
+}
+
+footer strong {
+  color: #91a8ff;
+}
+
+@media (max-width: 850px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  header {
+    padding: 15px 5%;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: #10172c;
+    padding: 20px;
+    flex-direction: column;
+    border-bottom: 1px solid #304064;
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  .hero {
+    min-height: 520px;
+    padding: 75px 6%;
+  }
+
+  .hero p {
+    font-size: 15px;
+  }
+
+  section {
+    padding: 65px 6%;
+  }
+
+  .section-heading h2 {
+    font-size: 28px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: auto;
+  }
 }
 </style>
 </head>
+
 <body>
 
 <header>
- <div class="logo">VEL<span>TRIX</span></div>
- <nav>
-  <a href="#home">Ana səhifə</a>
-  <a href="#ai">AI</a>
-  <a href="#studio">Studio</a>
-  <a href="#store">Store</a>
-  <a href="#news">News</a>
- </nav>
+  <a href="#" class="logo">VEL<span>TRIX</span></a>
+
+  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menyunu aç">☰</button>
+
+  <nav id="navigation">
+    <a href="#home" onclick="closeMenu()">Ana səhifə</a>
+    <a href="#services" onclick="closeMenu()">Xidmətlər</a>
+    <a href="#about" onclick="closeMenu()">Haqqımızda</a>
+  </nav>
 </header>
 
 <main>
-<section class="hero" id="home">
- <div class="tag">THE FUTURE STARTS HERE</div>
- <h1>THINK <span>BEYOND</span><br>LIMITS.</h1>
- <p>
-  Süni intellekt, yaradıcı dizayn və rəqəmsal
-  texnologiyaların yeni ünvanı.
-  Gələcəyin imkanlarını VELTRIX ilə kəşf et.
- </p>
- <a href="#ai" class="btn">Kəşf etməyə başla →</a>
-</section>
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="tag">✦ Rəqəmsal gələcəyə xoş gəlmisiniz</div>
 
-<section id="ai">
- <div class="heading">
-  <h2>VELTRIX AI</h2>
-  <p>Ağıllı texnologiyalar dünyasına daxil ol.</p>
- </div>
- <div class="cards">
-  <div class="card">
-   <div class="icon">🤖</div>
-   <h3>AI Assistant</h3>
-   <p>Süni intellekt köməkçisi. Suallarına cavab almaq üçün hazırlanır.</p>
-   <span class="label">TEZLİKLƏ</span>
-  </div>
-  <div class="card">
-   <div class="icon">✨</div>
-   <h3>AI Creator</h3>
-   <p>Yaradıcı ideyaları rəqəmsal layihələrə çevirmək üçün AI xidməti.</p>
-   <span class="label">TEZLİKLƏ</span>
-  </div>
- </div>
-</section>
+      <h1>THINK BEYOND <span>LIMITS.</span></h1>
 
-<section id="studio">
- <div class="heading">
-  <h2>VELTRIX STUDIO</h2>
-  <p>Yaradıcı fikirlərini dizayna çevir.</p>
- </div>
- <div class="cards">
-  <div class="card">
-   <div class="icon">🎨</div>
-   <h3>Logo Design</h3>
-   <p>Şirkət və şəxsi brendlər üçün loqo dizaynı.</p>
-   <span class="label">TEZLİKLƏ</span>
-  </div>
-  <div class="card">
-   <div class="icon">🖼️</div>
-   <h3>Background Editor</h3>
-   <p>Şəkillərin fonunu silmək və yeni fonlarla əvəz etmək.</p>
-   <span class="label">TEZLİKLƏ</span>
-  </div>
- </div>
-</section>
+      <p>
+        Süni intellekt, kreativ dizayn və rəqəmsal texnologiyaların
+        bir araya gəldiyi yeni nəsil platforma.
+      </p>
 
-<section id="store">
- <div class="heading">
-  <h2>VELTRIX STORE</h2>
-  <p>Rəqəmsal məhsulların ünvanı.</p>
- </div>
- <div class="cards">
-  <div class="card">
-   <div class="icon">📚</div>
-   <h3>E-books</h3>
-   <p>Elektron kitablar və faydalı PDF materialları.</p>
-   <span class="label">MAĞAZA HAZIRLANIR</span>
-  </div>
-  <div class="card">
-   <div class="icon">💎</div>
-   <h3>Digital Products</h3>
-   <p>Rəqəmsal məhsullar və yaradıcı materiallar.</p>
-   <span class="label">MAĞAZA HAZIRLANIR</span>
-  </div>
- </div>
-</section>
+      <a href="#services" class="primary-btn">Kəşf etməyə başla →</a>
+    </div>
+  </section>
 
-<section id="news">
- <div class="heading">
-  <h2>VELTRIX NEWS</h2>
-  <p>Texnologiya dünyasından yeniliklər.</p>
- </div>
- <div class="cards">
-  <div class="card">
-   <div class="icon">🌐</div>
-   <h3>AI & Technology</h3>
-   <p>Süni intellekt və texnologiya yenilikləri üçün xəbər bölməsi.</p>
-   <span class="label">HAZIRLANIR</span>
-  </div>
- </div>
-</section>
+  <section id="services">
+    <div class="section-heading">
+      <h2>VELTRIX dünyası</h2>
+      <p>Gələcəyin rəqəmsal imkanlarını kəşf et.</p>
+    </div>
 
-<section class="about">
- <h2>ABOUT VELTRIX</h2>
- <p>
-  VELTRIX texnologiya, süni intellekt və rəqəmsal
-  yaradıcılığı bir platformada birləşdirmək məqsədi
-  daşıyan müstəqil layihədir.
- </p>
- <p><strong>Think Beyond Limits.</strong></p>
-</section>
+    <div class="cards">
+
+      <div class="card">
+        <div class="card-icon">✧</div>
+        <h3>VELTRIX AI</h3>
+        <p>Süni intellekt alətləri və ağıllı rəqəmsal həllər.</p>
+        <span class="status">HAZIRLANIR</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">◈</div>
+        <h3>VELTRIX Studio</h3>
+        <p>Loqo, kreativ dizayn və şəkil redaktəsi layihələri.</p>
+        <span class="status">HAZIRLANIR</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">▣</div>
+        <h3>VELTRIX Store</h3>
+        <p>Rəqəmsal məhsullar, elektron kitablar və faydalı resurslar.</p>
+        <span class="status">HAZIRLANIR</span>
+      </div>
+
+      <div class="card">
+        <div class="card-icon">⌁</div>
+        <h3>VELTRIX News</h3>
+        <p>Süni intellekt və texnologiya dünyasından yeniliklər.</p>
+        <span class="status">HAZIRLANIR</span>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-content">
+      <div class="section-heading">
+        <h2>Biz kimik?</h2>
+        <p>VELTRIX — sadəcə bir sayt deyil, bir ideyadır.</p>
+      </div>
+
+      <p>
+        Məqsədimiz texnologiyanı daha əlçatan etmək,
+        yaradıcılığı dəstəkləmək və rəqəmsal dünyada
+        yeni imkanlar yaratmaqdır.
+      </p>
+
+      <p><strong>VELTRIX — Think Beyond Limits.</strong></p>
+    </div>
+  </section>
 </main>
 
 <footer>
- <strong>VELTRIX</strong>
- <p style="margin-top:12px">© 2026 VELTRIX. All rights reserved.</p>
- <p style="margin-top:8px">Think Beyond Limits.</p>
+  <p><strong>VELTRIX</strong> © <span id="year"></span> — Bütün hüquqlar qorunur.</p>
+  <p style="margin-top:8px;">Think Beyond Limits.</p>
 </footer>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navigation").classList.toggle("active");
+}
+
+function closeMenu() {
+  document.getElementById("navigation").classList.remove("active");
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
