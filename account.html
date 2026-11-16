@@ -58,7 +58,11 @@ button:disabled { opacity: .6; }
 
   <button id="submitBtn" onclick="handleAuth()">Qeydiyyatdan keç</button>
   <p id="message"></p>
-
+<div id="accountPanel" style="display:none; text-align:center;">
+  <h2 id="welcome"></h2>
+  <p>VELTRIX hesabına xoş gəlmisən!</p>
+  <button onclick="logout()">Hesabdan çıxış</button>
+</div>
   <div class="switch">
     <span id="switchText">Artıq hesabın var?</span>
     <a onclick="toggleMode()" id="switchLink">Daxil ol</a>
