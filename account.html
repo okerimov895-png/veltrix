@@ -6,91 +6,139 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VELTRIX | Hesab</title>
 <style>
-*{box-sizing:border-box}
-body{
- margin:0;min-height:100vh;display:flex;align-items:center;
- justify-content:center;padding:20px;
- background:linear-gradient(135deg,#071326,#102c50);
- color:white;font-family:Arial,sans-serif
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #071225;
+  color: white;
+  font-family: Arial, sans-serif;
 }
-.container{
- width:100%;max-width:410px;background:#10213a;
- padding:30px;border-radius:18px;
- border:1px solid #29496e;box-shadow:0 15px 45px #0005
+.container {
+  width: 85%;
+  max-width: 380px;
+  padding: 28px;
+  background: #101f38;
+  border-radius: 16px;
 }
-.logo{text-align:center;font-size:30px;font-weight:bold;letter-spacing:4px}
-.sub{text-align:center;color:#9db5d2;margin:10px 0 25px}
-.tabs{display:flex;gap:10px;margin-bottom:22px}
-.tabs button{
- flex:1;padding:12px;border:0;border-radius:9px;
- background:#203b5c;color:white;font-weight:bold
+h1 { color: #8da6ff; text-align: center; }
+input, button {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 13px;
+  margin-top: 12px;
+  border-radius: 8px;
+  border: 1px solid #344766;
 }
-.tabs button.active{background:#2678e8}
-input{
- width:100%;padding:14px;margin:8px 0 14px;
- border-radius:9px;border:1px solid #355477;
- background:#09182b;color:white;font-size:15px
+input { background: #071225; color: white; }
+button {
+  background: #526dff;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
 }
-label{font-size:14px;color:#c4d5e8}
-.action{
- width:100%;padding:14px;border:0;border-radius:9px;
- background:#2678e8;color:white;font-size:16px;font-weight:bold;
- margin-top:8px
-}
-.note{font-size:12px;color:#9db5d2;text-align:center;line-height:1.6;margin-top:20px}
-.hidden{display:none}
+button:disabled { opacity: .6; }
+.switch { text-align: center; margin-top: 18px; }
+.switch a { color: #8da6ff; cursor: pointer; }
+#message { text-align: center; font-size: 14px; }
 </style>
 </head>
 <body>
 <div class="container">
- <div class="logo">VELTRIX</div>
- <div class="sub">Your Digital World</div>
+  <h1>VELTRIX</h1>
+  <h2 id="heading">Hesab yarat</h2>
 
- <div class="tabs">
-  <button id="loginTab" class="active" onclick="showLogin()">Daxil ol</button>
-  <button id="signupTab" onclick="showSignup()">Qeydiyyat</button>
- </div>
+  <div id="usernameBox">
+    <input id="username" placeholder="İstifadəçi adı">
+  </div>
 
- <div id="login">
-  <h2>Yenidən xoş gəldin!</h2>
-  <label>E-poçt və ya istifadəçi adı</label>
-  <input type="text" placeholder="E-poçt ünvanı">
-  <label>VELTRIX şifrəsi</label>
-  <input type="password" placeholder="Şifrən">
-  <button class="action" onclick="demo()">Daxil ol</button>
- </div>
+  <input id="email" type="email" placeholder="E-poçt ünvanı">
+  <input id="password" type="password" placeholder="VELTRIX şifrəsi">
 
- <div id="signup" class="hidden">
-  <h2>Yeni hesab yarat</h2>
-  <label>İstifadəçi adı</label>
-  <input type="text" placeholder="Məsələn: User123">
-  <label>Gmail ünvanı</label>
-  <input type="email" placeholder="example@gmail.com">
-  <label>VELTRIX üçün yeni şifrə</label>
-  <input type="password" placeholder="Yeni şifrə">
-  <button class="action" onclick="demo()">Hesab yarat</button>
- </div>
+  <button id="submitBtn" onclick="handleAuth()">Qeydiyyatdan keç</button>
+  <p id="message"></p>
 
- <div class="note">
-  Bu, ilkin dizayn nümunəsidir. Hesab yaratma və giriş sistemi hələ qoşulmayıb.
- </div>
+  <div class="switch">
+    <span id="switchText">Artıq hesabın var?</span>
+    <a onclick="toggleMode()" id="switchLink">Daxil ol</a>
+  </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-function showLogin(){
- document.getElementById("login").classList.remove("hidden");
- document.getElementById("signup").classList.add("hidden");
- document.getElementById("loginTab").classList.add("active");
- document.getElementById("signupTab").classList.remove("active");
+const SUPABASE_URL = "https://yekcqqxgyrgreketnfez.supabase.co";
+const SUPABASE_KEY = "sb_publishable_8PPe8UicBq0ekvmaCxG2BA_zdHX_vZL";
+
+const client = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+let isSignup = true;
+
+function toggleMode() {
+  isSignup = !isSignup;
+  document.getElementById("heading").textContent =
+    isSignup ? "Hesab yarat" : "Hesaba daxil ol";
+  document.getElementById("usernameBox").style.display =
+    isSignup ? "block" : "none";
+  document.getElementById("submitBtn").textContent =
+    isSignup ? "Qeydiyyatdan keç" : "Daxil ol";
+  document.getElementById("switchText").textContent =
+    isSignup ? "Artıq hesabın var?" : "Hesabın yoxdur?";
+  document.getElementById("switchLink").textContent =
+    isSignup ? "Daxil ol" : "Qeydiyyat";
+  document.getElementById("message").textContent = "";
 }
-function showSignup(){
- document.getElementById("signup").classList.remove("hidden");
- document.getElementById("login").classList.add("hidden");
- document.getElementById("signupTab").classList.add("active");
- document.getElementById("loginTab").classList.remove("active");
-}
-function demo(){
- alert("VELTRIX hesab sistemi hələ aktiv deyil. Tezliklə qoşulacaq!");
+
+async function handleAuth() {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+  const username = document.getElementById("username").value.trim();
+  const message = document.getElementById("message");
+  const button = document.getElementById("submitBtn");
+
+  if (!email || !password || (isSignup && !username)) {
+    message.textContent = "Bütün xanaları doldur.";
+    return;
+  }
+
+  if (password.length < 8) {
+    message.textContent = "Şifrə ən azı 8 simvol olmalıdır.";
+    return;
+  }
+
+  button.disabled = true;
+  message.textContent = "Gözlə...";
+
+  try {
+    if (isSignup) {
+      const { data, error } = await client.auth.signUp({
+        email,
+        password,
+        options: { data: { username } }
+      });
+
+      if (error) throw error;
+
+      message.textContent = data.session
+        ? "Qeydiyyat uğurludur!"
+        : "Təsdiq məktubu e-poçtuna göndərildi. E-poçtunu yoxla.";
+    } else {
+      const { error } = await client.auth.signInWithPassword({
+        email,
+        password
+      });
+
+      if (error) throw error;
+      message.textContent = "Uğurla daxil oldun!";
+    }
+  } catch (error) {
+    message.textContent = error.message;
+  } finally {
+    button.disabled = false;
+  }
 }
 </script>
 </body>
