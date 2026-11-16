@@ -4,76 +4,136 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VELTRIX | Hesab</title>
+<title>VELTRIX | Account</title>
+
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   min-height: 100vh;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #071225;
   color: white;
   font-family: Arial, sans-serif;
+  padding: 20px;
 }
+
 .container {
-  width: 85%;
-  max-width: 380px;
+  width: 100%;
+  max-width: 400px;
   padding: 28px;
   background: #101f38;
-  border-radius: 16px;
+  border: 1px solid #263b5e;
+  border-radius: 18px;
 }
-h1 { color: #8da6ff; text-align: center; }
-input, button {
-  box-sizing: border-box;
+
+h1 {
+  text-align: center;
+  color: #8da6ff;
+  letter-spacing: 3px;
+}
+
+h2 { text-align: center; }
+
+input {
+  display: block;
   width: 100%;
-  padding: 13px;
-  margin-top: 12px;
-  border-radius: 8px;
+  padding: 14px;
+  margin: 12px 0;
   border: 1px solid #344766;
+  border-radius: 9px;
+  background: #071225;
+  color: white;
+  font-size: 15px;
 }
-input { background: #071225; color: white; }
+
 button {
+  width: 100%;
+  padding: 14px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 9px;
   background: #526dff;
   color: white;
   font-weight: bold;
+  font-size: 15px;
   cursor: pointer;
 }
+
 button:disabled { opacity: .6; }
-.switch { text-align: center; margin-top: 18px; }
-.switch a { color: #8da6ff; cursor: pointer; }
-#message { text-align: center; font-size: 14px; }
+
+.switch {
+  text-align: center;
+  margin-top: 20px;
+}
+
+a {
+  color: #8da6ff;
+  cursor: pointer;
+}
+
+#message {
+  text-align: center;
+  overflow-wrap: anywhere;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#accountPanel {
+  display: none;
+  text-align: center;
+}
 </style>
 </head>
+
 <body>
 <div class="container">
-  <h1>VELTRIX</h1>
+
+<h1>VELTRIX</h1>
+
+<div id="authPanel">
   <h2 id="heading">Hesab yarat</h2>
 
-  <div id="usernameBox">
-    <input id="username" placeholder="İstifadəçi adı">
-  </div>
+  <input id="username" placeholder="İstifadəçi adı">
 
-  <input id="email" type="email" placeholder="E-poçt ünvanı">
-  <input id="password" type="password" placeholder="VELTRIX şifrəsi">
+  <input id="email" type="email"
+         placeholder="E-poçt ünvanı">
 
-  <button id="submitBtn" onclick="handleAuth()">Qeydiyyatdan keç</button>
+  <input id="password" type="password"
+         placeholder="VELTRIX şifrəsi">
+
+  <button id="submitBtn" type="button"
+          onclick="handleAuth()">
+    Qeydiyyatdan keç
+  </button>
+
   <p id="message"></p>
-<div id="accountPanel" style="display:none; text-align:center;">
-  <h2 id="welcome"></h2>
-  <p>VELTRIX hesabına xoş gəlmisən!</p>
-  <button onclick="logout()">Hesabdan çıxış</button>
-</div>
+
   <div class="switch">
     <span id="switchText">Artıq hesabın var?</span>
     <a onclick="toggleMode()" id="switchLink">Daxil ol</a>
   </div>
 </div>
 
+<div id="accountPanel">
+  <h2 id="welcome"></h2>
+  <p>VELTRIX hesabına xoş gəlmisən!</p>
+  <button onclick="logout()">Hesabdan çıxış</button>
+</div>
+
+</div>
+
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-  
-const SUPABASE_URL = "https://yekcqqxgyrgreketnfez.supabase.co";
-const SUPABASE_KEY = "sb_publishable_8PPe8UicBq0ekvmaCxG2BA_zdHX_vZL";
+const SUPABASE_URL =
+  "https://yekcqqxgyrgreketnfez.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_8PPe8UicBq0ekvmaCxG2BA_zdHX_vZL";
 
 const client = window.supabase.createClient(
   SUPABASE_URL,
@@ -82,33 +142,8 @@ const client = window.supabase.createClient(
 
 let isSignup = true;
 
-function renderAccount(session) {
-  const loggedIn = !!session;
-
-  document.getElementById("accountPanel").style.display =
-    loggedIn ? "block" : "none";
-
-  document.getElementById("usernameBox").style.display =
-    loggedIn || !isSignup ? "none" : "block";
-
-  document.getElementById("email").style.display =
-    loggedIn ? "none" : "block";
-
-  document.getElementById("password").style.display =
-    loggedIn ? "none" : "block";
-
-  document.getElementById("submitBtn").style.display =
-    loggedIn ? "none" : "block";
-
-  document.querySelector(".switch").style.display =
-    loggedIn ? "none" : "block";
-
-  if (loggedIn) {
-    const user = session.user;
-    const name = user.user_metadata?.username || user.email;
-    document.getElementById("welcome").textContent =
-      "Salam, " + name + "!";
-  }
+function showMessage(text) {
+  document.getElementById("message").textContent = text;
 }
 
 function toggleMode() {
@@ -117,7 +152,7 @@ function toggleMode() {
   document.getElementById("heading").textContent =
     isSignup ? "Hesab yarat" : "Hesaba daxil ol";
 
-  document.getElementById("usernameBox").style.display =
+  document.getElementById("username").style.display =
     isSignup ? "block" : "none";
 
   document.getElementById("submitBtn").textContent =
@@ -129,61 +164,82 @@ function toggleMode() {
   document.getElementById("switchLink").textContent =
     isSignup ? "Daxil ol" : "Qeydiyyat";
 
-  document.getElementById("message").textContent = "";
+  showMessage("");
 }
 
 async function handleAuth() {
   const email = document.getElementById("email").value.trim();
   const password = document.getElementById("password").value;
   const username = document.getElementById("username").value.trim();
-  const message = document.getElementById("message");
+  const button = document.getElementById("submitBtn");
 
   if (!email || !password || (isSignup && !username)) {
-    message.textContent = "Bütün xanaları doldur.";
+    showMessage("Bütün xanaları doldur.");
     return;
   }
 
   if (password.length < 8) {
-    message.textContent = "Şifrə ən azı 8 simvol olmalıdır.";
+    showMessage("Şifrə ən azı 8 simvol olmalıdır.");
     return;
   }
 
-  try {
-    document.getElementById("submitBtn").disabled = true;
-    message.textContent = "Gözlə...";
+  button.disabled = true;
+  showMessage("Yoxlanılır...");
 
+  try {
     if (isSignup) {
       const { data, error } = await client.auth.signUp({
-        email,
-        password,
-        options: { data: { username } }
+        email: email,
+        password: password,
+        options: {
+          data: { username: username }
+        }
       });
 
       if (error) throw error;
 
       if (data.session) {
-        renderAccount(data.session);
-        message.textContent = "Qeydiyyat uğurludur!";
+        showMessage("Qeydiyyat uğurludur!");
       } else {
-        message.textContent =
-          "Təsdiq məktubu göndərildi. E-poçtunu yoxla.";
+        showMessage(
+          "Təsdiq məktubu göndərildi. E-poçtunu yoxla."
+        );
       }
+
     } else {
-      const { data, error } =
-        await client.auth.signInWithPassword({
-          email,
-          password
-        });
+      const { error } = await client.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
 
       if (error) throw error;
 
-      renderAccount(data.session);
-      message.textContent = "Uğurla daxil oldun!";
+      showMessage("Giriş uğurludur!");
     }
+
   } catch (error) {
-    message.textContent = error.message;
+    showMessage("Xəta: " + error.message);
   } finally {
-    document.getElementById("submitBtn").disabled = false;
+    button.disabled = false;
+  }
+}
+
+function renderAccount(session) {
+  const loggedIn = Boolean(session);
+
+  document.getElementById("authPanel").style.display =
+    loggedIn ? "none" : "block";
+
+  document.getElementById("accountPanel").style.display =
+    loggedIn ? "block" : "none";
+
+  if (loggedIn) {
+    const username =
+      session.user.user_metadata?.username ||
+      session.user.email;
+
+    document.getElementById("welcome").textContent =
+      "Salam, " + username + "!";
   }
 }
 
@@ -191,24 +247,38 @@ async function logout() {
   const { error } = await client.auth.signOut();
 
   if (error) {
-    document.getElementById("message").textContent = error.message;
+    showMessage(error.message);
     return;
   }
 
   isSignup = false;
-  document.getElementById("heading").textContent = "Hesaba daxil ol";
-  document.getElementById("message").textContent = "Hesabdan çıxdın.";
+  document.getElementById("heading").textContent =
+    "Hesaba daxil ol";
+
+  document.getElementById("username").style.display = "none";
+  document.getElementById("submitBtn").textContent = "Daxil ol";
+  document.getElementById("switchText").textContent =
+    "Hesabın yoxdur?";
+  document.getElementById("switchLink").textContent =
+    "Qeydiyyat";
+
+  showMessage("Hesabdan çıxış edildi.");
   renderAccount(null);
 }
 
-client.auth.onAuthStateChange((_event, session) => {
+client.auth.onAuthStateChange((event, session) => {
   renderAccount(session);
 });
 
-client.auth.getSession().then(({ data }) => {
+client.auth.getSession().then(({ data, error }) => {
+  if (error) {
+    showMessage(error.message);
+    return;
+  }
+
   renderAccount(data.session);
 });
-
 </script>
+
 </body>
 </html>
