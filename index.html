@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d19">
+<title>VELTRIX | Think Beyond Limits</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+ font-family:Arial,sans-serif;
+ background:#080d19;color:#f4f7ff;
+}
+header{
+ display:flex;justify-content:space-between;
+ align-items:center;padding:20px 7%;
+ border-bottom:1px solid #202b40;
+ position:sticky;top:0;background:#080d19;
+ z-index:10;
+}
+.logo{font-size:27px;font-weight:900;letter-spacing:3px}
+.logo span{color:#398bff}
+nav{display:flex;gap:22px}
+nav a{color:#b9c5d9;text-decoration:none;font-size:14px}
+nav a:hover{color:#398bff}
+.hero{
+ min-height:510px;padding:100px 8%;
+ display:flex;flex-direction:column;
+ justify-content:center;align-items:center;text-align:center;
+ background:radial-gradient(ellipse at center,#12376b 0%,#080d19 65%);
+}
+.tag{
+ color:#5da4ff;border:1px solid #28538c;
+ padding:8px 15px;border-radius:30px;
+ font-size:12px;letter-spacing:2px;
+}
+h1{font-size:clamp(43px,8vw,76px);margin:25px 0 15px}
+h1 span{color:#438fff}
+.hero p{color:#aebbd0;max-width:550px;line-height:1.8}
+.btn{
+ display:inline-block;margin-top:28px;
+ padding:14px 27px;border-radius:9px;
+ background:#287bea;color:white;
+ text-decoration:none;font-weight:bold;
+ border:none;cursor:pointer;
+}
+.btn:hover{background:#4594ff}
+section{padding:75px 7%}
+.heading{text-align:center;margin-bottom:40px}
+.heading h2{font-size:32px;margin-bottom:12px}
+.heading p{color:#93a3ba}
+.cards{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:20px;max-width:1100px;margin:auto;
+}
+.card{
+ background:#101a2b;border:1px solid #263752;
+ border-radius:15px;padding:27px;
+ transition:.25s;
+}
+.card:hover{transform:translateY(-5px);border-color:#398bff}
+.icon{font-size:34px;margin-bottom:20px}
+.card h3{font-size:21px;margin-bottom:12px}
+.card p{color:#aab8cc;line-height:1.7;font-size:14px}
+.card a{display:inline-block;margin-top:20px;color:#65a7ff;text-decoration:none}
+.label{
+ display:inline-block;margin-top:15px;
+ color:#78b5ff;font-size:11px;
+ background:#142b49;padding:6px 10px;border-radius:20px;
+}
+.about{
+ text-align:center;background:#0c1423;
+}
+.about p{max-width:650px;margin:15px auto;color:#aab8cc;line-height:1.9}
+footer{
+ padding:35px 7%;text-align:center;
+ border-top:1px solid #26334a;color:#8291a8;
+}
+footer strong{color:#fff;letter-spacing:3px}
+@media(max-width:650px){
+ header{padding:17px 5%;flex-wrap:wrap;gap:15px}
+ nav{width:100%;gap:17px;overflow-x:auto;padding-bottom:5px}
+ nav a{white-space:nowrap;font-size:12px}
+ section{padding:55px 5%}
+ .hero{min-height:440px;padding:70px 6%}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="logo">VEL<span>TRIX</span></div>
+ <nav>
+  <a href="#home">Ana səhifə</a>
+  <a href="#ai">AI</a>
+  <a href="#studio">Studio</a>
+  <a href="#store">Store</a>
+  <a href="#news">News</a>
+ </nav>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="tag">THE FUTURE STARTS HERE</div>
+ <h1>THINK <span>BEYOND</span><br>LIMITS.</h1>
+ <p>
+  Süni intellekt, yaradıcı dizayn və rəqəmsal
+  texnologiyaların yeni ünvanı.
+  Gələcəyin imkanlarını VELTRIX ilə kəşf et.
+ </p>
+ <a href="#ai" class="btn">Kəşf etməyə başla →</a>
+</section>
+
+<section id="ai">
+ <div class="heading">
+  <h2>VELTRIX AI</h2>
+  <p>Ağıllı texnologiyalar dünyasına daxil ol.</p>
+ </div>
+ <div class="cards">
+  <div class="card">
+   <div class="icon">🤖</div>
+   <h3>AI Assistant</h3>
+   <p>Süni intellekt köməkçisi. Suallarına cavab almaq üçün hazırlanır.</p>
+   <span class="label">TEZLİKLƏ</span>
+  </div>
+  <div class="card">
+   <div class="icon">✨</div>
+   <h3>AI Creator</h3>
+   <p>Yaradıcı ideyaları rəqəmsal layihələrə çevirmək üçün AI xidməti.</p>
+   <span class="label">TEZLİKLƏ</span>
+  </div>
+ </div>
+</section>
+
+<section id="studio">
+ <div class="heading">
+  <h2>VELTRIX STUDIO</h2>
+  <p>Yaradıcı fikirlərini dizayna çevir.</p>
+ </div>
+ <div class="cards">
+  <div class="card">
+   <div class="icon">🎨</div>
+   <h3>Logo Design</h3>
+   <p>Şirkət və şəxsi brendlər üçün loqo dizaynı.</p>
+   <span class="label">TEZLİKLƏ</span>
+  </div>
+  <div class="card">
+   <div class="icon">🖼️</div>
+   <h3>Background Editor</h3>
+   <p>Şəkillərin fonunu silmək və yeni fonlarla əvəz etmək.</p>
+   <span class="label">TEZLİKLƏ</span>
+  </div>
+ </div>
+</section>
+
+<section id="store">
+ <div class="heading">
+  <h2>VELTRIX STORE</h2>
+  <p>Rəqəmsal məhsulların ünvanı.</p>
+ </div>
+ <div class="cards">
+  <div class="card">
+   <div class="icon">📚</div>
+   <h3>E-books</h3>
+   <p>Elektron kitablar və faydalı PDF materialları.</p>
+   <span class="label">MAĞAZA HAZIRLANIR</span>
+  </div>
+  <div class="card">
+   <div class="icon">💎</div>
+   <h3>Digital Products</h3>
+   <p>Rəqəmsal məhsullar və yaradıcı materiallar.</p>
+   <span class="label">MAĞAZA HAZIRLANIR</span>
+  </div>
+ </div>
+</section>
+
+<section id="news">
+ <div class="heading">
+  <h2>VELTRIX NEWS</h2>
+  <p>Texnologiya dünyasından yeniliklər.</p>
+ </div>
+ <div class="cards">
+  <div class="card">
+   <div class="icon">🌐</div>
+   <h3>AI & Technology</h3>
+   <p>Süni intellekt və texnologiya yenilikləri üçün xəbər bölməsi.</p>
+   <span class="label">HAZIRLANIR</span>
+  </div>
+ </div>
+</section>
+
+<section class="about">
+ <h2>ABOUT VELTRIX</h2>
+ <p>
+  VELTRIX texnologiya, süni intellekt və rəqəmsal
+  yaradıcılığı bir platformada birləşdirmək məqsədi
+  daşıyan müstəqil layihədir.
+ </p>
+ <p><strong>Think Beyond Limits.</strong></p>
+</section>
+</main>
+
+<footer>
+ <strong>VELTRIX</strong>
+ <p style="margin-top:12px">© 2026 VELTRIX. All rights reserved.</p>
+ <p style="margin-top:8px">Think Beyond Limits.</p>
+</footer>
+
+</body>
+</html>
