@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b18">
+<title>VELTRIX AI</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+font-family:Arial,sans-serif;
+background:#080b18;
+color:#fff;
+min-height:100vh;
+}
+header{
+height:70px;
+padding:0 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid #263252;
+background:#0d1429;
+}
+.logo{font-size:23px;font-weight:900;letter-spacing:2px}
+.logo span{color:#7695ff}
+header a{color:#aebcff;text-decoration:none;font-size:14px}
+main{max-width:850px;margin:45px auto;padding:0 18px}
+.heading{text-align:center;margin-bottom:30px}
+.heading h1{font-size:38px;margin-bottom:10px}
+.heading h1 span{color:#7795ff}
+.heading p{color:#9ba9c7}
+.chat{
+background:#10182d;
+border:1px solid #29395f;
+border-radius:18px;
+overflow:hidden;
+}
+.chat-top{
+padding:18px;
+border-bottom:1px solid #29395f;
+display:flex;
+align-items:center;
+gap:12px;
+}
+.dot{
+width:11px;height:11px;border-radius:50%;
+background:#55d99b;
+box-shadow:0 0 12px #55d99b;
+}
+.chat-top small{color:#a8b6d4}
+.messages{
+height:390px;
+overflow-y:auto;
+padding:22px;
+display:flex;
+flex-direction:column;
+gap:17px;
+}
+.message{
+max-width:85%;
+padding:13px 16px;
+border-radius:13px;
+line-height:1.5;
+font-size:14px;
+white-space:pre-wrap;
+overflow-wrap:anywhere;
+}
+.bot{
+background:#1a2745;
+align-self:flex-start;
+border:1px solid #30456f;
+}
+.user{
+background:#405fce;
+align-self:flex-end;
+}
+.input-area{
+padding:17px;
+border-top:1px solid #29395f;
+display:flex;
+gap:10px;
+}
+input{
+min-width:0;
+flex:1;
+background:#080f20;
+border:1px solid #34466f;
+border-radius:10px;
+padding:14px;
+color:white;
+outline:none;
+font-size:14px;
+}
+input:focus{border-color:#7795ff}
+button{
+border:0;
+border-radius:10px;
+padding:0 20px;
+background:linear-gradient(110deg,#4568ed,#805be9);
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+button:disabled{opacity:.5}
+.note{
+text-align:center;
+font-size:12px;
+color:#8795b2;
+margin-top:16px;
+line-height:1.6;
+}
+@media(max-width:550px){
+main{margin:30px auto}
+.heading h1{font-size:31px}
+.messages{height:55vh}
+.input-area{padding:12px}
+button{padding:0 14px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">VEL<span>TRIX</span> AI</div>
+<a href="index.html">← Ana səhifə</a>
+</header>
+
+<main>
+<div class="heading">
+<h1>VELTRIX <span>AI</span></h1>
+<p>Yeni ideyalar. Ağıllı texnologiya. Sonsuz imkanlar.</p>
+</div>
+
+<div class="chat">
+<div class="chat-top">
+<div class="dot"></div>
+<div>
+<strong>VELTRIX Assistant</strong><br>
+<small>Söhbət interfeysi</small>
+</div>
+</div>
+
+<div class="messages" id="messages">
+<div class="message bot">
+Salam! VELTRIX AI səhifəsinə xoş gəlmisən.
+
+Mənim söhbət interfeysim hazırdır. Real süni intellekt bağlantısı növbəti mərhələdə əlavə ediləcək.
+</div>
+</div>
+
+<form class="input-area" id="chatForm">
+<input id="userInput" type="text"
+placeholder="Mesajını yaz..."
+autocomplete="off"
+aria-label="Mesajın">
+<button id="sendButton" type="submit">Göndər</button>
+</form>
+</div>
+
+<p class="note">
+Hazırkı versiya nümayiş interfeysidir. Mesajlar hələ real AI modelinə göndərilmir.
+</p>
+</main>
+
+<script>
+const form=document.getElementById("chatForm");
+const input=document.getElementById("userInput");
+const messages=document.getElementById("messages");
+
+form.addEventListener("submit",function(e){
+e.preventDefault();
+const text=input.value.trim();
+if(!text)return;
+
+const userMessage=document.createElement("div");
+userMessage.className="message user";
+userMessage.textContent=text;
+messages.appendChild(userMessage);
+
+const reply=document.createElement("div");
+reply.className="message bot";
+reply.textContent="Mesajın interfeysə əlavə edildi. Real AI bağlantısı hələ qurulmayıb.";
+messages.appendChild(reply);
+
+input.value="";
+messages.scrollTop=messages.scrollHeight;
+});
+</script>
+
+</body>
+</html>
