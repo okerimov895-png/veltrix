@@ -71,8 +71,9 @@ button:disabled { opacity: .6; }
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+  
 const SUPABASE_URL = "https://yekcqqxgyrgreketnfez.supabase.co";
-const SUPABASE_KEY = "sb_publishable_8PPe8UicBq0ekvmaCxG2BA_zdHX_vZL";
+const SUPABASE_KEY = "BURAYA_YENI_PUBLISHABLE_KEY";
 
 const client = window.supabase.createClient(
   SUPABASE_URL,
@@ -81,18 +82,53 @@ const client = window.supabase.createClient(
 
 let isSignup = true;
 
+function renderAccount(session) {
+  const loggedIn = !!session;
+
+  document.getElementById("accountPanel").style.display =
+    loggedIn ? "block" : "none";
+
+  document.getElementById("usernameBox").style.display =
+    loggedIn || !isSignup ? "none" : "block";
+
+  document.getElementById("email").style.display =
+    loggedIn ? "none" : "block";
+
+  document.getElementById("password").style.display =
+    loggedIn ? "none" : "block";
+
+  document.getElementById("submitBtn").style.display =
+    loggedIn ? "none" : "block";
+
+  document.querySelector(".switch").style.display =
+    loggedIn ? "none" : "block";
+
+  if (loggedIn) {
+    const user = session.user;
+    const name = user.user_metadata?.username || user.email;
+    document.getElementById("welcome").textContent =
+      "Salam, " + name + "!";
+  }
+}
+
 function toggleMode() {
   isSignup = !isSignup;
+
   document.getElementById("heading").textContent =
     isSignup ? "Hesab yarat" : "Hesaba daxil ol";
+
   document.getElementById("usernameBox").style.display =
     isSignup ? "block" : "none";
+
   document.getElementById("submitBtn").textContent =
     isSignup ? "Qeydiyyatdan keç" : "Daxil ol";
+
   document.getElementById("switchText").textContent =
     isSignup ? "Artıq hesabın var?" : "Hesabın yoxdur?";
+
   document.getElementById("switchLink").textContent =
     isSignup ? "Daxil ol" : "Qeydiyyat";
+
   document.getElementById("message").textContent = "";
 }
 
@@ -101,7 +137,6 @@ async function handleAuth() {
   const password = document.getElementById("password").value;
   const username = document.getElementById("username").value.trim();
   const message = document.getElementById("message");
-  const button = document.getElementById("submitBtn");
 
   if (!email || !password || (isSignup && !username)) {
     message.textContent = "Bütün xanaları doldur.";
@@ -113,10 +148,10 @@ async function handleAuth() {
     return;
   }
 
-  button.disabled = true;
-  message.textContent = "Gözlə...";
-
   try {
+    document.getElementById("submitBtn").disabled = true;
+    message.textContent = "Gözlə...";
+
     if (isSignup) {
       const { data, error } = await client.auth.signUp({
         email,
@@ -126,24 +161,54 @@ async function handleAuth() {
 
       if (error) throw error;
 
-      message.textContent = data.session
-        ? "Qeydiyyat uğurludur!"
-        : "Təsdiq məktubu e-poçtuna göndərildi. E-poçtunu yoxla.";
+      if (data.session) {
+        renderAccount(data.session);
+        message.textContent = "Qeydiyyat uğurludur!";
+      } else {
+        message.textContent =
+          "Təsdiq məktubu göndərildi. E-poçtunu yoxla.";
+      }
     } else {
-      const { error } = await client.auth.signInWithPassword({
-        email,
-        password
-      });
+      const { data, error } =
+        await client.auth.signInWithPassword({
+          email,
+          password
+        });
 
       if (error) throw error;
+
+      renderAccount(data.session);
       message.textContent = "Uğurla daxil oldun!";
     }
   } catch (error) {
     message.textContent = error.message;
   } finally {
-    button.disabled = false;
+    document.getElementById("submitBtn").disabled = false;
   }
 }
+
+async function logout() {
+  const { error } = await client.auth.signOut();
+
+  if (error) {
+    document.getElementById("message").textContent = error.message;
+    return;
+  }
+
+  isSignup = false;
+  document.getElementById("heading").textContent = "Hesaba daxil ol";
+  document.getElementById("message").textContent = "Hesabdan çıxdın.";
+  renderAccount(null);
+}
+
+client.auth.onAuthStateChange((_event, session) => {
+  renderAccount(session);
+});
+
+client.auth.getSession().then(({ data }) => {
+  renderAccount(data.session);
+});
+
 </script>
 </body>
 </html>
