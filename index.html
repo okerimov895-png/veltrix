@@ -5,302 +5,217 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080b18">
-<meta name="description" content="VELTRIX — Süni intellekt, kreativ dizayn və rəqəmsal texnologiyalar dünyası.">
+<meta name="description" content="VELTRIX — Think Beyond Limits">
 <title>VELTRIX — Think Beyond Limits</title>
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ font-family:Arial,sans-serif;
+ background:#080b18;color:#f5f7ff;line-height:1.6
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+header{
+ width:100%;padding:18px 7%;
+ display:flex;justify-content:space-between;align-items:center;
+ background:rgba(8,11,24,.96);
+ border-bottom:1px solid #202945;
+ position:sticky;top:0;z-index:20;
+ backdrop-filter:blur(12px)
+}
+.logo{font-size:25px;font-weight:900;letter-spacing:3px;color:white}
+.logo span{color:#6585ff}
+.header-right{display:flex;align-items:center;gap:20px}
+nav{display:flex;gap:25px;align-items:center}
+nav a{color:#b8c1da;font-size:14px;transition:.3s}
+nav a:hover{color:#7594ff}
+
+.header-actions{display:flex;align-items:center;gap:12px}
+.menu-btn{
+ display:none;border:1px solid #354267;background:#111831;
+ color:white;padding:8px 12px;border-radius:8px;font-size:20px
 }
 
-html {
-  scroll-behavior: smooth;
+/* PROFİL */
+.profile-wrap{position:relative}
+.profile-btn{
+ display:flex;align-items:center;gap:9px;
+ background:#151e38;border:1px solid #354267;
+ color:white;padding:7px 13px;border-radius:30px;
+ font-size:13px;transition:.2s
+}
+.profile-btn:hover{border-color:#7594ff}
+.profile-avatar{
+ width:30px;height:30px;border-radius:50%;
+ object-fit:cover;background:#334a86;
+ display:flex;align-items:center;justify-content:center;
+ font-weight:bold;color:white;font-size:13px
+}
+.profile-dropdown{
+ display:none;position:absolute;right:0;top:48px;
+ width:260px;background:#111a31;
+ border:1px solid #34466f;border-radius:14px;
+ padding:16px;box-shadow:0 15px 40px #0008;
+ z-index:30
+}
+.profile-dropdown.active{display:block}
+.profile-info{
+ display:flex;align-items:center;gap:12px;
+ padding-bottom:14px;border-bottom:1px solid #293858;
+ margin-bottom:10px
+}
+.profile-info .profile-avatar{width:43px;height:43px;font-size:17px}
+.profile-info strong{display:block;font-size:14px}
+.profile-info small{display:block;color:#8f9dbb;font-size:11px;word-break:break-all}
+.profile-item{
+ display:block;width:100%;text-align:left;
+ padding:10px;border:0;border-radius:8px;
+ background:transparent;color:#cbd5ee;font-size:13px
+}
+.profile-item:hover{background:#202e50;color:white}
+.profile-item.danger{color:#ff8585}
+.login-link{
+ display:block;text-align:center;background:#4269ee;
+ padding:10px;border-radius:8px;font-size:13px;
+ margin-top:8px
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #080b18;
-  color: #f5f7ff;
-  line-height: 1.6;
+/* ƏSAS SƏHİFƏ */
+.hero{
+ min-height:590px;padding:100px 8%;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;
+ background:
+ radial-gradient(ellipse at 50% 20%,#1a2e67 0%,transparent 55%),
+ linear-gradient(145deg,#080b18,#101832)
+}
+.hero-content{max-width:850px}
+.tag{
+ display:inline-block;padding:8px 17px;
+ border:1px solid #4059a0;border-radius:30px;
+ color:#a9bbff;font-size:13px;margin-bottom:25px;
+ background:#4969d21a
+}
+.hero h1{
+ font-size:clamp(42px,8vw,76px);
+ line-height:1.12;font-weight:900;letter-spacing:-2px
+}
+.hero h1 span{color:#7594ff;text-shadow:0 0 35px #5377ff59}
+.hero p{
+ color:#aeb9d3;font-size:17px;max-width:620px;
+ margin:25px auto 32px
+}
+.primary-btn{
+ display:inline-block;background:linear-gradient(100deg,#4269ee,#8159ed);
+ color:white;padding:14px 27px;border-radius:9px;
+ font-weight:bold;box-shadow:0 8px 30px #4c67f03f;
+ transition:.3s
+}
+.primary-btn:hover{transform:translateY(-3px)}
+
+section{padding:85px 8%}
+.section-heading{text-align:center;margin-bottom:45px}
+.section-heading h2{font-size:34px;margin-bottom:10px}
+.section-heading p{color:#98a5c3}
+
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{
+ background:linear-gradient(145deg,#151e38,#101629);
+ border:1px solid #263456;padding:28px 23px;
+ border-radius:16px;transition:.3s;min-height:245px
+}
+.card:hover{
+ transform:translateY(-7px);border-color:#6385ff;
+ box-shadow:0 12px 35px #254baa26
+}
+.card-icon{font-size:32px;margin-bottom:17px}
+.card h3{font-size:20px;margin-bottom:10px}
+.card p{color:#a4afc8;font-size:14px;margin-bottom:20px}
+.card a{color:#8da6ff;font-size:13px;font-weight:bold}
+.status{
+ display:inline-block;color:#aebcff;background:#202e55;
+ border-radius:20px;padding:5px 10px;font-size:11px
 }
 
-a {
-  text-decoration: none;
-  color: inherit;
+.about{background:#0d1325;text-align:center}
+.about-content{max-width:750px;margin:auto}
+.about-content p{color:#aab5ce;margin-top:17px}
+
+/* ƏLAQƏ */
+.contact{text-align:center;background:#0a1020}
+.contact-content{max-width:650px;margin:auto}
+.contact-content p{color:#aab5ce;margin:12px 0 22px}
+.contact-link{
+ display:inline-block;padding:11px 22px;
+ border:1px solid #526fc1;border-radius:9px;
+ color:#a9bbff;font-size:14px
 }
+.contact-link:hover{background:#17264a}
 
-header {
-  width: 100%;
-  padding: 18px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(8,11,24,0.94);
-  border-bottom: 1px solid #202945;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  backdrop-filter: blur(12px);
+footer{
+ text-align:center;padding:35px 15px;background:#070a14;
+ border-top:1px solid #202945;color:#8793af;font-size:13px
 }
+footer strong{color:#91a8ff}
+.footer-links{display:flex;justify-content:center;gap:22px;margin-top:12px}
+.footer-links a:hover{color:#91a8ff}
 
-.logo {
-  font-size: 25px;
-  font-weight: 900;
-  letter-spacing: 3px;
-  color: #fff;
+/* PARAMETRLƏR PƏNCƏRƏSİ */
+.modal-overlay{
+ display:none;position:fixed;inset:0;
+ background:#000a;z-index:50;
+ align-items:center;justify-content:center;padding:18px
 }
-
-.logo span {
-  color: #6585ff;
+.modal-overlay.active{display:flex}
+.modal{
+ width:100%;max-width:420px;background:#111a31;
+ border:1px solid #34466f;border-radius:16px;padding:23px;
+ box-shadow:0 20px 60px #0009
 }
-
-nav {
-  display: flex;
-  gap: 25px;
-  align-items: center;
+.modal h2{font-size:21px;margin-bottom:5px}
+.modal-desc{font-size:12px;color:#92a0bf;margin-bottom:20px}
+.modal label{display:block;font-size:13px;color:#bdc9e4;margin:13px 0 6px}
+.modal input{
+ width:100%;padding:12px;background:#080f20;
+ border:1px solid #34466f;border-radius:8px;
+ color:white;outline:none;font-size:14px
 }
-
-nav a {
-  color: #b8c1da;
-  font-size: 14px;
-  transition: 0.3s;
+.modal input:focus{border-color:#7594ff}
+.modal-buttons{display:flex;gap:10px;margin-top:20px}
+.modal-buttons button{
+ flex:1;padding:11px;border-radius:8px;
+ border:0;font-weight:bold
 }
+.save-btn{background:#4269ee;color:white}
+.cancel-btn{background:#263452;color:#d5def4}
+#message{font-size:12px;color:#a9bbff;margin-top:12px;min-height:18px}
 
-nav a:hover {
-  color: #7594ff;
+@media(max-width:850px){
+ .cards{grid-template-columns:repeat(2,1fr)}
 }
-
-.menu-btn {
-  display: none;
-  border: 1px solid #354267;
-  background: #111831;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 20px;
-}
-
-.hero {
-  min-height: 590px;
-  padding: 100px 8%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background:
-    radial-gradient(ellipse at 50% 20%, #1a2e67 0%, transparent 55%),
-    linear-gradient(145deg, #080b18, #101832);
-}
-
-.hero-content {
-  max-width: 850px;
-}
-
-.tag {
-  display: inline-block;
-  padding: 8px 17px;
-  border: 1px solid #4059a0;
-  border-radius: 30px;
-  color: #a9bbff;
-  font-size: 13px;
-  margin-bottom: 25px;
-  background: rgba(73,105,210,0.10);
-}
-
-.hero h1 {
-  font-size: clamp(42px, 8vw, 76px);
-  line-height: 1.12;
-  font-weight: 900;
-  letter-spacing: -2px;
-}
-
-.hero h1 span {
-  color: #7594ff;
-  text-shadow: 0 0 35px rgba(83,119,255,0.35);
-}
-
-.hero p {
-  color: #aeb9d3;
-  font-size: 17px;
-  max-width: 620px;
-  margin: 25px auto 32px;
-}
-
-.primary-btn {
-  display: inline-block;
-  background: linear-gradient(100deg, #4269ee, #8159ed);
-  color: white;
-  padding: 14px 27px;
-  border-radius: 9px;
-  font-weight: bold;
-  box-shadow: 0 8px 30px rgba(76,103,240,0.25);
-  transition: 0.3s;
-}
-
-.primary-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(76,103,240,0.4);
-}
-
-section {
-  padding: 85px 8%;
-}
-
-.section-heading {
-  text-align: center;
-  margin-bottom: 45px;
-}
-
-.section-heading h2 {
-  font-size: 34px;
-  margin-bottom: 10px;
-}
-
-.section-heading p {
-  color: #98a5c3;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-}
-
-.card {
-  background: linear-gradient(145deg, #151e38, #101629);
-  border: 1px solid #263456;
-  padding: 28px 23px;
-  border-radius: 16px;
-  transition: 0.3s;
-  min-height: 245px;
-}
-
-.card:hover {
-  transform: translateY(-7px);
-  border-color: #6385ff;
-  box-shadow: 0 12px 35px rgba(37,75,170,0.15);
-}
-
-.card-icon {
-  font-size: 32px;
-  margin-bottom: 17px;
-}
-
-.card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.card p {
-  color: #a4afc8;
-  font-size: 14px;
-  margin-bottom: 20px;
-}
-
-.card a {
-  color: #8da6ff;
-  font-size: 13px;
-  font-weight: bold;
-}
-
-.status {
-  display: inline-block;
-  color: #aebcff;
-  background: #202e55;
-  border-radius: 20px;
-  padding: 5px 10px;
-  font-size: 11px;
-}
-
-.about {
-  background: #0d1325;
-  text-align: center;
-}
-
-.about-content {
-  max-width: 750px;
-  margin: auto;
-}
-
-.about-content p {
-  color: #aab5ce;
-  margin-top: 17px;
-}
-
-footer {
-  text-align: center;
-  padding: 35px 15px;
-  background: #070a14;
-  border-top: 1px solid #202945;
-  color: #8793af;
-  font-size: 13px;
-}
-
-footer strong {
-  color: #91a8ff;
-}
-
-@media (max-width: 850px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 15px 5%;
-  }
-
-  .logo {
-    font-size: 22px;
-  }
-
-  .menu-btn {
-    display: block;
-  }
-
-  nav {
-    display: none;
-    position: absolute;
-    top: 65px;
-    left: 0;
-    width: 100%;
-    background: #10172c;
-    padding: 20px;
-    flex-direction: column;
-    border-bottom: 1px solid #304064;
-  }
-
-  nav.active {
-    display: flex;
-  }
-
-  .hero {
-    min-height: 520px;
-    padding: 75px 6%;
-  }
-
-  .hero p {
-    font-size: 15px;
-  }
-
-  section {
-    padding: 65px 6%;
-  }
-
-  .section-heading h2 {
-    font-size: 28px;
-  }
-
-  .cards {
-    grid-template-columns: 1fr;
-  }
-
-  .card {
-    min-height: auto;
-  }
+@media(max-width:600px){
+ header{padding:13px 5%}
+ .logo{font-size:21px}
+ .header-right{gap:10px}
+ .menu-btn{display:block}
+ nav{
+  display:none;position:absolute;top:65px;left:0;width:100%;
+  background:#10172c;padding:20px;flex-direction:column;
+  border-bottom:1px solid #304064
+ }
+ nav.active{display:flex}
+ .profile-btn{padding:6px 9px;font-size:12px}
+ .profile-btn .profile-label{display:none}
+ .profile-dropdown{right:-5px;width:250px}
+ .hero{min-height:520px;padding:75px 6%}
+ .hero p{font-size:15px}
+ section{padding:65px 6%}
+ .section-heading h2{font-size:28px}
+ .cards{grid-template-columns:1fr}
+ .card{min-height:auto}
 }
 </style>
 </head>
@@ -308,108 +223,449 @@ footer strong {
 <body>
 
 <header>
-  <a href="#" class="logo">VEL<span>TRIX</span></a>
+ <a href="#" class="logo">VEL<span>TRIX</span></a>
 
-  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menyunu aç">☰</button>
-
+ <div class="header-right">
   <nav id="navigation">
-  <a href="#home" onclick="closeMenu()">Ana səhifə</a>
-  <a href="#services" onclick="closeMenu()">Xidmətlər</a>
-  <a href="#about" onclick="closeMenu()">Haqqımızda</a>
-  <a href="account.html" onclick="closeMenu()" style="color:#8da6ff;font-weight:bold;">Hesab ↗</a>
+   <a href="#home" onclick="closeMenu()">Ana səhifə</a>
+   <a href="#services" onclick="closeMenu()">Xidmətlər</a>
+   <a href="#about" onclick="closeMenu()">Haqqımızda</a>
+   <a href="#contact" onclick="closeMenu()">Əlaqə</a>
   </nav>
+
+  <div class="header-actions">
+   <div class="profile-wrap">
+    <button class="profile-btn" onclick="toggleProfile(event)">
+     <span class="profile-avatar" id="headerAvatar">?</span>
+     <span class="profile-label" id="profileLabel">Profil</span>
+     <span>⌄</span>
+    </button>
+
+    <div class="profile-dropdown" id="profileDropdown">
+     <div class="profile-info">
+      <span class="profile-avatar" id="dropdownAvatar">?</span>
+      <div>
+       <strong id="dropdownName">Qonaq</strong>
+       <small id="dropdownEmail">Hesaba daxil olun</small>
+      </div>
+     </div>
+
+     <button class="profile-item" id="changePhotoBtn" onclick="chooseAvatar()">
+      📷 Profil şəklini dəyiş
+     </button>
+     <button class="profile-item" onclick="openSettings()">
+      ⚙️ Profil parametrləri
+     </button>
+     <button class="profile-item" onclick="openPasswordSettings()">
+      🔒 Şifrəni dəyiş
+     </button>
+     <button class="profile-item danger" id="logoutBtn" onclick="logout()" style="display:none">
+      ↪ Hesabdan çıxış
+     </button>
+     <a href="account.html" class="login-link" id="loginLink">Daxil ol / Qeydiyyat</a>
+    </div>
+   </div>
+
+   <button class="menu-btn" onclick="toggleMenu()" aria-label="Menyunu aç">☰</button>
+  </div>
+ </div>
 </header>
 
 <main>
-  <section class="hero" id="home">
-    <div class="hero-content">
-      <div class="tag">✦ Rəqəmsal gələcəyə xoş gəlmisiniz</div>
+ <section class="hero" id="home">
+  <div class="hero-content">
+   <div class="tag">✦ Rəqəmsal gələcəyə xoş gəlmisiniz</div>
+   <h1>THINK BEYOND <span>LIMITS.</span></h1>
+   <p>
+    Süni intellekt, kreativ dizayn və rəqəmsal texnologiyaların
+    bir araya gəldiyi yeni nəsil platforma.
+   </p>
+   <a href="#services" class="primary-btn">Kəşf etməyə başla →</a>
+  </div>
+ </section>
 
-      <h1>THINK BEYOND <span>LIMITS.</span></h1>
+ <section id="services">
+  <div class="section-heading">
+   <h2>VELTRIX dünyası</h2>
+   <p>Gələcəyin rəqəmsal imkanlarını kəşf et.</p>
+  </div>
 
-      <p>
-        Süni intellekt, kreativ dizayn və rəqəmsal texnologiyaların
-        bir araya gəldiyi yeni nəsil platforma.
-      </p>
+  <div class="cards">
+   <a class="card" href="ai.html" style="display:block;color:inherit">
+    <div class="card-icon">✧</div>
+    <h3>VELTRIX AI</h3>
+    <p>Süni intellekt alətləri və ağıllı rəqəmsal həllər.</p>
+    <span class="status">AI SÖHBƏTİNƏ KEÇ →</span>
+   </a>
 
-      <a href="#services" class="primary-btn">Kəşf etməyə başla →</a>
-    </div>
-  </section>
+   <div class="card">
+    <div class="card-icon">◈</div>
+    <h3>VELTRIX Studio</h3>
+    <p>Loqo, kreativ dizayn və şəkil redaktəsi layihələri.</p>
+    <span class="status">HAZIRLANIR</span>
+   </div>
 
-  <section id="services">
-    <div class="section-heading">
-      <h2>VELTRIX dünyası</h2>
-      <p>Gələcəyin rəqəmsal imkanlarını kəşf et.</p>
-    </div>
+   <div class="card">
+    <div class="card-icon">▣</div>
+    <h3>VELTRIX Store</h3>
+    <p>Rəqəmsal məhsullar, elektron kitablar və faydalı resurslar.</p>
+    <span class="status">HAZIRLANIR</span>
+   </div>
 
-    <div class="cards">
+   <div class="card">
+    <div class="card-icon">⌁</div>
+    <h3>VELTRIX News</h3>
+    <p>Süni intellekt və texnologiya dünyasından yeniliklər.</p>
+    <span class="status">HAZIRLANIR</span>
+   </div>
+  </div>
+ </section>
 
-      
-<a class="card" href="ai.html" style="display:block;text-decoration:none;color:inherit;">
-  <div class="card-icon">✧</div>
-  <h3>VELTRIX AI</h3>
-  <p>Süni intellekt alətləri və ağıllı rəqəmsal həllər.</p>
-  <span class="status">AI SÖHBƏTİNƏ KEÇ →</span>
-</a>
+ <section class="about" id="about">
+  <div class="about-content">
+   <div class="section-heading">
+    <h2>Biz kimik?</h2>
+    <p>VELTRIX — sadəcə bir sayt deyil, bir ideyadır.</p>
+   </div>
+   <p>
+    Məqsədimiz texnologiyanı daha əlçatan etmək,
+    yaradıcılığı dəstəkləmək və rəqəmsal dünyada
+    yeni imkanlar yaratmaqdır.
+   </p>
+   <p><strong>VELTRIX — Think Beyond Limits.</strong></p>
+  </div>
+ </section>
 
-
-      <div class="card">
-        <div class="card-icon">◈</div>
-        <h3>VELTRIX Studio</h3>
-        <p>Loqo, kreativ dizayn və şəkil redaktəsi layihələri.</p>
-        <span class="status">HAZIRLANIR</span>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">▣</div>
-        <h3>VELTRIX Store</h3>
-        <p>Rəqəmsal məhsullar, elektron kitablar və faydalı resurslar.</p>
-        <span class="status">HAZIRLANIR</span>
-      </div>
-
-      <div class="card">
-        <div class="card-icon">⌁</div>
-        <h3>VELTRIX News</h3>
-        <p>Süni intellekt və texnologiya dünyasından yeniliklər.</p>
-        <span class="status">HAZIRLANIR</span>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="about" id="about">
-    <div class="about-content">
-      <div class="section-heading">
-        <h2>Biz kimik?</h2>
-        <p>VELTRIX — sadəcə bir sayt deyil, bir ideyadır.</p>
-      </div>
-
-      <p>
-        Məqsədimiz texnologiyanı daha əlçatan etmək,
-        yaradıcılığı dəstəkləmək və rəqəmsal dünyada
-        yeni imkanlar yaratmaqdır.
-      </p>
-
-      <p><strong>VELTRIX — Think Beyond Limits.</strong></p>
-    </div>
-  </section>
+ <section class="contact" id="contact">
+  <div class="contact-content">
+   <div class="section-heading">
+    <h2>Əlaqə</h2>
+    <p>VELTRIX ilə bağlı sual və təkliflərin var?</p>
+   </div>
+   <p>Bizimlə əlaqə məlumatları tezliklə burada yerləşdiriləcək.</p>
+  </div>
+ </section>
 </main>
 
 <footer>
-  <p><strong>VELTRIX</strong> © <span id="year"></span> — Bütün hüquqlar qorunur.</p>
-  <p style="margin-top:8px;">Think Beyond Limits.</p>
+ <p><strong>VELTRIX</strong> © <span id="year"></span> — Bütün hüquqlar qorunur.</p>
+ <div class="footer-links">
+  <a href="#about">Haqqımızda</a>
+  <a href="#contact">Əlaqə</a>
+  <a href="#home">Yuxarı ↑</a>
+ </div>
+ <p style="margin-top:10px">Think Beyond Limits.</p>
 </footer>
 
+<!-- PROFİL ŞƏKLİ SEÇİMİ -->
+<input type="file" id="avatarInput" accept="image/*" hidden>
+
+<!-- PROFİL PARAMETRLƏRİ -->
+<div class="modal-overlay" id="settingsModal">
+ <div class="modal">
+  <h2>Profil parametrləri</h2>
+  <p class="modal-desc">Hesab məlumatlarını yenilə.</p>
+
+  <label for="usernameInput">Ad / İstifadəçi adı</label>
+  <input id="usernameInput" type="text" maxlength="30" placeholder="Adını daxil et">
+
+  <div class="modal-buttons">
+   <button class="cancel-btn" onclick="closeModal()">Bağla</button>
+   <button class="save-btn" onclick="saveUsername()">Yadda saxla</button>
+  </div>
+  <div id="message"></div>
+ </div>
+</div>
+
+<!-- ŞİFRƏ DƏYİŞMƏ -->
+<div class="modal-overlay" id="passwordModal">
+ <div class="modal">
+  <h2>Şifrəni dəyiş</h2>
+  <p class="modal-desc">Yeni hesab şifrəsini daxil et.</p>
+
+  <label for="newPassword">Yeni şifrə</label>
+  <input id="newPassword" type="password" minlength="6" placeholder="Yeni şifrə">
+
+  <label for="confirmPassword">Şifrəni təkrar yaz</label>
+  <input id="confirmPassword" type="password" minlength="6" placeholder="Şifrəni təkrar daxil et">
+
+  <div class="modal-buttons">
+   <button class="cancel-btn" onclick="closePasswordModal()">Bağla</button>
+   <button class="save-btn" onclick="changePassword()">Yadda saxla</button>
+  </div>
+  <div id="passwordMessage"></div>
+ </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
-function toggleMenu() {
-  document.getElementById("navigation").classList.toggle("active");
+// SUPABASE KONFİQURASİYASI
+const SUPABASE_URL = "https://yekcqqxgyrgreketnfez.supabase.co";
+
+// Buraya account.html faylındakı eyni PUBLIC ANON açarı yaz.
+const SUPABASE_KEY = "ACCOUNT_HTML_DAKI_PUBLIC_ANON_KEY";
+
+const client = window.supabase.createClient(
+ SUPABASE_URL,
+ SUPABASE_KEY
+);
+
+let currentUser = null;
+
+function toggleMenu(){
+ document.getElementById("navigation").classList.toggle("active");
 }
 
-function closeMenu() {
-  document.getElementById("navigation").classList.remove("active");
+function closeMenu(){
+ document.getElementById("navigation").classList.remove("active");
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+function toggleProfile(event){
+ event.stopPropagation();
+ document.getElementById("profileDropdown").classList.toggle("active");
+}
+
+document.addEventListener("click",function(event){
+ const wrap=document.querySelector(".profile-wrap");
+ if(!wrap.contains(event.target)){
+  document.getElementById("profileDropdown").classList.remove("active");
+ }
+});
+
+function closeProfile(){
+ document.getElementById("profileDropdown").classList.remove("active");
+}
+
+function setAvatar(element,url,name){
+ element.innerHTML="";
+ if(url){
+  const img=document.createElement("img");
+  img.src=url;
+  img.alt="Profil şəkli";
+  img.className="profile-avatar";
+  element.replaceWith(img);
+  img.id=element.id;
+ }else{
+  element.textContent=(name||"?").charAt(0).toUpperCase();
+ }
+}
+
+function updateProfileUI(user){
+ currentUser=user;
+
+ const name=user
+  ? (user.user_metadata?.username || user.email?.split("@")[0] || "İstifadəçi")
+  : "Qonaq";
+
+ const email=user?.email || "Hesaba daxil olun";
+ const avatar=user?.user_metadata?.avatar_url || "";
+
+ document.getElementById("dropdownName").textContent=name;
+ document.getElementById("dropdownEmail").textContent=email;
+ document.getElementById("profileLabel").textContent=user ? name : "Profil";
+
+ const headerAvatar=document.getElementById("headerAvatar");
+ const dropdownAvatar=document.getElementById("dropdownAvatar");
+
+ [headerAvatar,dropdownAvatar].forEach(el=>{
+  el.innerHTML="";
+  if(avatar){
+   const img=document.createElement("img");
+   img.src=avatar;
+   img.alt="Profil şəkli";
+   img.className="profile-avatar";
+   img.style.width="100%";
+   img.style.height="100%";
+   el.appendChild(img);
+  }else{
+   el.textContent=user ? name.charAt(0).toUpperCase() : "?";
+  }
+ });
+
+ document.getElementById("logoutBtn").style.display=user ? "block" : "none";
+ document.getElementById("loginLink").style.display=user ? "none" : "block";
+ document.getElementById("changePhotoBtn").style.display=user ? "block" : "none";
+}
+
+async function loadUser(){
+ const {data,error}=await client.auth.getSession();
+
+ if(error){
+  console.error(error);
+  return;
+ }
+
+ updateProfileUI(data.session?.user || null);
+}
+
+client.auth.onAuthStateChange((_event,session)=>{
+ updateProfileUI(session?.user || null);
+});
+
+// PROFİL ADINI YENİLƏ
+function openSettings(){
+ closeProfile();
+
+ if(!currentUser){
+  location.href="account.html";
+  return;
+ }
+
+ document.getElementById("usernameInput").value=
+  currentUser.user_metadata?.username || "";
+
+ document.getElementById("message").textContent="";
+ document.getElementById("settingsModal").classList.add("active");
+}
+
+function closeModal(){
+ document.getElementById("settingsModal").classList.remove("active");
+}
+
+async function saveUsername(){
+ if(!currentUser)return;
+
+ const username=document.getElementById("usernameInput").value.trim();
+ const message=document.getElementById("message");
+
+ if(username.length<2){
+  message.textContent="Ad ən azı 2 simvol olmalıdır.";
+  return;
+ }
+
+ message.textContent="Yadda saxlanılır...";
+
+ const {data,error}=await client.auth.updateUser({
+  data:{username:username}
+ });
+
+ if(error){
+  message.textContent="Xəta: "+error.message;
+  return;
+ }
+
+ updateProfileUI(data.user);
+ message.textContent="Ad uğurla yeniləndi!";
+}
+
+// PROFİL ŞƏKLİ
+function chooseAvatar(){
+ closeProfile();
+ document.getElementById("avatarInput").click();
+}
+
+document.getElementById("avatarInput").addEventListener("change",async function(){
+ const file=this.files[0];
+ if(!file || !currentUser)return;
+
+ if(!file.type.startsWith("image/")){
+  alert("Zəhmət olmasa şəkil faylı seç.");
+  return;
+ }
+
+ if(file.size>3*1024*1024){
+  alert("Şəklin ölçüsü 3 MB-dan az olmalıdır.");
+  return;
+ }
+
+ const extension=file.name.split(".").pop().toLowerCase();
+ const path=currentUser.id+"/avatar."+extension;
+
+ alert("Profil şəkli yüklənir...");
+
+ const {error:uploadError}=await client.storage
+  .from("avatars")
+  .upload(path,file,{upsert:true,contentType:file.type});
+
+ if(uploadError){
+  alert("Şəkil yüklənmədi: "+uploadError.message);
+  this.value="";
+  return;
+ }
+
+ const {data:urlData}=client.storage
+  .from("avatars")
+  .getPublicUrl(path);
+
+ const {data,error}=await client.auth.updateUser({
+  data:{avatar_url:urlData.publicUrl}
+ });
+
+ if(error){
+  alert("Profil məlumatı yenilənmədi: "+error.message);
+ }else{
+  updateProfileUI(data.user);
+  alert("Profil şəkli yeniləndi!");
+ }
+
+ this.value="";
+});
+
+// ŞİFRƏ DƏYİŞMƏ
+function openPasswordSettings(){
+ closeProfile();
+
+ if(!currentUser){
+  location.href="account.html";
+  return;
+ }
+
+ document.getElementById("newPassword").value="";
+ document.getElementById("confirmPassword").value="";
+ document.getElementById("passwordMessage").textContent="";
+ document.getElementById("passwordModal").classList.add("active");
+}
+
+function closePasswordModal(){
+ document.getElementById("passwordModal").classList.remove("active");
+}
+
+async function changePassword(){
+ const password=document.getElementById("newPassword").value;
+ const confirm=document.getElementById("confirmPassword").value;
+ const message=document.getElementById("passwordMessage");
+
+ if(password.length<6){
+  message.textContent="Şifrə ən azı 6 simvol olmalıdır.";
+  return;
+ }
+
+ if(password!==confirm){
+  message.textContent="Şifrələr uyğun gəlmir.";
+  return;
+ }
+
+ message.textContent="Yenilənir...";
+
+ const {error}=await client.auth.updateUser({password});
+
+ if(error){
+  message.textContent="Xəta: "+error.message;
+ }else{
+  message.textContent="Şifrə uğurla dəyişdirildi!";
+  document.getElementById("newPassword").value="";
+  document.getElementById("confirmPassword").value="";
+ }
+}
+
+// HESABDAN ÇIXIŞ
+async function logout(){
+ if(!currentUser)return;
+
+ const {error}=await client.auth.signOut();
+
+ if(error){
+  alert("Çıxış zamanı xəta: "+error.message);
+  return;
+ }
+
+ location.reload();
+}
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+loadUser();
 </script>
 
 </body>
