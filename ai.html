@@ -7,107 +7,65 @@
 <title>VELTRIX AI</title>
 <style>
 *{box-sizing:border-box}
-body{
- margin:0;background:#080e1b;color:#edf4ff;
- font-family:Arial,sans-serif;min-height:100vh;
- display:flex;flex-direction:column
-}
-header{
- height:68px;padding:0 18px;display:flex;
- align-items:center;justify-content:space-between;
- background:#0d1729;border-bottom:1px solid #243550
-}
+body{margin:0;background:#080e1b;color:#edf4ff;font-family:Arial,sans-serif;min-height:100vh;display:flex;flex-direction:column}
+header{height:68px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;background:#0d1729;border-bottom:1px solid #243550}
 .brand{display:flex;align-items:center;gap:11px}
-.logo{
- width:40px;height:40px;border-radius:13px;
- background:linear-gradient(135deg,#2879ed,#784cf0);
- display:grid;place-items:center;font-size:21px;font-weight:bold
-}
+.logo{width:40px;height:40px;border-radius:13px;background:linear-gradient(135deg,#2879ed,#784cf0);display:grid;place-items:center;font-size:21px;font-weight:bold}
 .brand h2{font-size:18px;margin:0}
 .brand small{font-size:10px;color:#91a9ca;letter-spacing:1px}
-header button{
- background:#1b2b43;color:white;border:0;
- border-radius:10px;padding:10px 13px;font-size:19px
-}
-main{
- width:100%;max-width:850px;margin:auto;
- padding:20px 15px;flex:1;display:flex;flex-direction:column
-}
+.header-actions{display:flex;gap:9px;align-items:center}
+header button,.profile-btn{background:#1b2b43;color:white;border:0;border-radius:10px;padding:10px 13px;font-size:18px;cursor:pointer}
+.profile-btn{display:flex;align-items:center;gap:8px;font-size:13px}
+.avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,#2879ed,#784cf0);display:grid;place-items:center;font-weight:bold}
+main{width:100%;max-width:850px;margin:auto;padding:20px 15px;flex:1;display:flex;flex-direction:column}
 .welcome{text-align:center;margin:35px 0 25px}
-.orb{
- width:72px;height:72px;margin:auto auto 17px;
- border-radius:24px;background:linear-gradient(135deg,#246fd5,#7449e9);
- display:grid;place-items:center;font-size:35px;
- box-shadow:0 0 40px #2767ca55
-}
+.orb{width:72px;height:72px;margin:auto auto 17px;border-radius:24px;background:linear-gradient(135deg,#246fd5,#7449e9);display:grid;place-items:center;font-size:35px;box-shadow:0 0 40px #2767ca55}
 .welcome h1{font-size:27px;margin:0 0 10px}
 .welcome p{color:#9aacc7;font-size:14px;line-height:1.6}
-.features{
- display:grid;grid-template-columns:repeat(2,1fr);
- gap:11px;margin-bottom:25px
-}
-.feature{
- background:#111e32;border:1px solid #263b59;
- border-radius:15px;padding:15px;text-align:left
-}
+.features{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;margin-bottom:25px}
+.feature{background:#111e32;border:1px solid #263b59;border-radius:15px;padding:15px;text-align:left}
 .feature .ico{font-size:23px;margin-bottom:9px}
 .feature strong{display:block;font-size:14px}
 .feature small{display:block;color:#91a6c4;margin-top:6px;font-size:11px}
 #chat{display:none;flex-direction:column;gap:13px;padding-bottom:20px}
-.message{
- max-width:88%;padding:13px 15px;border-radius:15px;
- font-size:14px;line-height:1.6;white-space:pre-wrap
-}
+.message{max-width:88%;padding:13px 15px;border-radius:15px;font-size:14px;line-height:1.6;white-space:pre-wrap}
 .bot{background:#14243b;border:1px solid #263d5d;align-self:flex-start}
 .user{background:#246bd0;align-self:flex-end}
-.composer{
- position:sticky;bottom:0;background:#080e1b;
- padding:12px 0 17px
-}
-.inputbox{
- display:flex;align-items:flex-end;gap:9px;
- background:#111e32;border:1px solid #304665;
- border-radius:17px;padding:10px
-}
-textarea{
- flex:1;resize:none;min-height:42px;max-height:120px;
- background:transparent;border:0;outline:none;
- color:white;font-size:14px;padding:11px 4px;
- font-family:inherit
-}
+.composer{position:sticky;bottom:0;background:#080e1b;padding:12px 0 17px}
+.inputbox{display:flex;align-items:flex-end;gap:9px;background:#111e32;border:1px solid #304665;border-radius:17px;padding:10px}
+textarea{flex:1;resize:none;min-height:42px;max-height:120px;background:transparent;border:0;outline:none;color:white;font-size:14px;padding:11px 4px;font-family:inherit}
 textarea::placeholder{color:#8195b2}
-#send{
- width:43px;height:43px;border:0;border-radius:13px;
- background:#347de9;color:white;font-size:20px
-}
+#send{width:43px;height:43px;border:0;border-radius:13px;background:#347de9;color:white;font-size:20px;cursor:pointer}
 .note{text-align:center;color:#6f83a2;font-size:10px;margin-top:10px}
-#history{
- display:none;position:fixed;inset:0;background:#0009;z-index:5
-}
-.panel{
- width:270px;height:100%;background:#101c30;
- padding:22px;border-right:1px solid #30415c
-}
-.panel button{
- width:100%;padding:12px;background:#1b2e49;
- color:white;border:0;border-radius:10px;margin:10px 0
-}
-@media(min-width:650px){
- .features{grid-template-columns:repeat(4,1fr)}
- .welcome{margin-top:55px}
-}
+.overlay{display:none;position:fixed;inset:0;background:#0009;z-index:5}
+.panel{width:min(310px,85vw);height:100%;background:#101c30;padding:22px;border-right:1px solid #30415c;overflow:auto}
+.panel button{width:100%;padding:12px;background:#1b2e49;color:white;border:0;border-radius:10px;margin:7px 0;cursor:pointer;text-align:left}
+.panel-title{display:flex;justify-content:space-between;align-items:center}
+.panel-title button{width:auto}
+.profile-card{background:#172840;border:1px solid #304665;border-radius:15px;padding:17px;margin:18px 0;text-align:center}
+.big-avatar{width:65px;height:65px;border-radius:50%;background:linear-gradient(135deg,#2879ed,#784cf0);display:grid;place-items:center;font-size:25px;font-weight:bold;margin:auto auto 10px}
+.profile-card h3{margin:5px}
+.profile-card p{color:#91a6c4;font-size:12px;margin:5px}
+.section-label{font-size:11px;color:#7892b5;margin:20px 0 8px}
+.history-item{font-size:13px;color:#c8d7ec;background:#172840;padding:12px;border-radius:9px;margin:7px 0;overflow:hidden;text-overflow:ellipsis}
+#settings input{width:100%;padding:12px;background:#172840;border:1px solid #304665;border-radius:9px;color:white;margin:8px 0}
+#settings{display:none}
+@media(min-width:650px){.features{grid-template-columns:repeat(4,1fr)}.welcome{margin-top:55px}}
 </style>
 </head>
 <body>
 <header>
  <div class="brand">
   <div class="logo">V</div>
-  <div>
-   <h2>VELTRIX AI</h2>
-   <small>THINK BEYOND LIMITS</small>
-  </div>
+  <div><h2>VELTRIX AI</h2><small>THINK BEYOND LIMITS</small></div>
  </div>
- <button onclick="toggleHistory()">☰</button>
+ <div class="header-actions">
+  <button onclick="togglePanel('history')">☰</button>
+  <button class="profile-btn" onclick="togglePanel('profile')">
+   <span class="avatar" id="headerAvatar">V</span>
+   <span id="headerName">Profil</span>
+  </button>
+ </div>
 </header>
 
 <main>
@@ -116,16 +74,13 @@ textarea::placeholder{color:#8195b2}
   <h1>Salam! Mən VELTRIX.</h1>
   <p>Sualını ver, fikrini bölüş və ya öyrənmək istədiyin mövzunu yaz.<br>Qalanını mən müəyyən edəcəyəm.</p>
  </section>
-
  <section class="features" id="features">
   <div class="feature"><div class="ico">🌐</div><strong>Tərcümə</strong><small>Dillər və mətn izahı</small></div>
   <div class="feature"><div class="ico">🧠</div><strong>Psixologiya</strong><small>Davranış və emosiyalar</small></div>
   <div class="feature"><div class="ico">📰</div><strong>Xəbərlər</strong><small>Texnologiya və dünya</small></div>
   <div class="feature"><div class="ico">✨</div><strong>Ümumi bilik</strong><small>Suallar və öyrənmə</small></div>
  </section>
-
  <section id="chat"></section>
-
  <div class="composer">
   <div class="inputbox">
    <textarea id="prompt" placeholder="VELTRIX-ə mesaj yaz..." rows="1"></textarea>
@@ -135,28 +90,91 @@ textarea::placeholder{color:#8195b2}
  </div>
 </main>
 
-<div id="history" onclick="toggleHistory()">
+<div class="overlay" id="history" onclick="closePanels()">
  <div class="panel" onclick="event.stopPropagation()">
-  <h3>Söhbət</h3>
+  <div class="panel-title"><h3>Söhbətlər</h3><button onclick="closePanels()">✕</button></div>
   <button onclick="newChat()">＋ Yeni söhbət</button>
-  <p style="color:#91a6c4;font-size:12px">VELTRIX AI</p>
+  <div class="section-label">SON SÖHBƏTLƏR</div>
+  <div id="historyList"><p style="color:#91a6c4;font-size:12px">Hələ söhbət yoxdur.</p></div>
+ </div>
+</div>
+
+<div class="overlay" id="profile" onclick="closePanels()">
+ <div class="panel" onclick="event.stopPropagation()">
+  <div class="panel-title"><h3>Hesabım</h3><button onclick="closePanels()">✕</button></div>
+  <div class="profile-card">
+   <div class="big-avatar" id="bigAvatar">V</div>
+   <h3 id="profileName">VELTRIX istifadəçisi</h3>
+   <p id="profileEmail">E-poçt hələ qoşulmayıb</p>
+  </div>
+  <button onclick="showSettings()">⚙️ Profil parametrləri</button>
+  <button onclick="newChat()">＋ Yeni söhbət</button>
+  <button onclick="alert('Supabase hesab bağlantısı növbəti mərhələdə əlavə ediləcək.')">↪ Hesabdan çıxış</button>
+  <div id="settings">
+   <div class="section-label">PROFİL MƏLUMATLARI</div>
+   <input id="nameInput" placeholder="İstifadəçi adı" maxlength="30">
+   <button onclick="saveProfile()">Yadda saxla</button>
+   <button onclick="hideSettings()">Geri qayıt</button>
+  </div>
  </div>
 </div>
 
 <script>
 const promptBox=document.getElementById("prompt");
 const chat=document.getElementById("chat");
+let profileName=localStorage.getItem("veltrix_name")||"VELTRIX istifadəçisi";
+let historyItems=JSON.parse(localStorage.getItem("veltrix_history")||"[]");
 
-function toggleHistory(){
- const h=document.getElementById("history");
- h.style.display=h.style.display==="block"?"none":"block";
+function updateProfile(){
+ document.getElementById("headerName").textContent=profileName;
+ document.getElementById("profileName").textContent=profileName;
+ document.getElementById("headerAvatar").textContent=profileName.charAt(0).toUpperCase();
+ document.getElementById("bigAvatar").textContent=profileName.charAt(0).toUpperCase();
 }
+function togglePanel(id){
+ closePanels();
+ document.getElementById(id).style.display="block";
+}
+function closePanels(){
+ document.querySelectorAll(".overlay").forEach(x=>x.style.display="none");
+}
+function showSettings(){
+ document.getElementById("settings").style.display="block";
+ document.getElementById("nameInput").value=profileName;
+}
+function hideSettings(){
+ document.getElementById("settings").style.display="none";
+}
+function saveProfile(){
+ const value=document.getElementById("nameInput").value.trim();
+ if(!value){alert("Ad boş ola bilməz.");return;}
+ profileName=value;
+ localStorage.setItem("veltrix_name",profileName);
+ updateProfile();
+ alert("Profil adı yadda saxlanıldı.");
+ hideSettings();
+}
+function renderHistory(){
+ const list=document.getElementById("historyList");
+ list.innerHTML="";
+ if(!historyItems.length){
+  list.innerHTML='<p style="color:#91a6c4;font-size:12px">Hələ söhbət yoxdur.</p>';
+  return;
+ }
+ historyItems.slice().reverse().forEach(item=>{
+  const div=document.createElement("div");
+  div.className="history-item";
+  div.textContent=item;
+  list.appendChild(div);
+ });
+}
+function toggleHistory(){togglePanel("history");}
 function newChat(){
  chat.innerHTML="";
  chat.style.display="none";
  document.getElementById("welcome").style.display="block";
  document.getElementById("features").style.display="grid";
- toggleHistory();
+ closePanels();
 }
 function addMessage(text,type){
  const div=document.createElement("div");
@@ -171,15 +189,18 @@ function sendMessage(){
  document.getElementById("features").style.display="none";
  chat.style.display="flex";
  addMessage(value,"user");
+ historyItems.push(value);
+ localStorage.setItem("veltrix_history",JSON.stringify(historyItems));
+ renderHistory();
  promptBox.value="";
- addMessage("VELTRIX AI interfeysi hazırdır. Real süni intellekt, tərcümə, psixologiya və xəbər xidmətlərini növbəti mərhələdə təhlükəsiz server bağlantısı ilə aktivləşdirəcəyik.","bot");
+ addMessage("VELTRIX AI interfeysi hazırdır. Real süni intellekt və server bağlantısı növbəti mərhələdə aktivləşdiriləcək.","bot");
  chat.scrollIntoView({behavior:"smooth",block:"end"});
 }
 promptBox.addEventListener("keydown",function(e){
- if(e.key==="Enter"&&!e.shiftKey){
-  e.preventDefault();sendMessage();
- }
+ if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendMessage();}
 });
+updateProfile();
+renderHistory();
 </script>
 </body>
 </html>
