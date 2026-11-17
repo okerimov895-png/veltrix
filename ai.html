@@ -501,7 +501,8 @@ async function saveChat(){
  }
 }
 
-/* MESAJ GÖNDƏR */
+
+/* REAL VELTRIX AI */
 async function sendMessage(){
  const value = promptBox.value.trim();
 
@@ -512,7 +513,6 @@ async function sendMessage(){
 
  document.getElementById("welcome").style.display = "none";
  document.getElementById("features").style.display = "none";
-
  chat.style.display = "flex";
 
  addMessage(value,"user");
@@ -524,76 +524,43 @@ async function sendMessage(){
 
  promptBox.value = "";
 
- // Hələlik demo cavabdır. Real AI API bağlantısı ayrıca qoşulmalıdır.
- const botReply =
-  "VELTRIX interfeysi hazırdır. Real süni intellekt bağlantısı növbəti mərhələdə aktivləşdiriləcək.";
+ try {
+  const { data, error } = await client.functions.invoke(
+   "bright-action",
+   {
+    body: {
+     messages: currentMessages
+      .filter(m => ["user","assistant","bot"].includes(m.role))
+      .map(m => ({
+       role: m.role === "bot" ? "assistant" : m.role,
+       content: m.content
+      }))
+   }
+  );
 
- addMessage(botReply,"bot");
+  if(error) throw error;
+  if(!data || !data.reply) {
+   throw new Error("AI cavabı alınmadı");
+  }
 
- currentMessages.push({
-  role:"assistant",
-  content:botReply
- });
+  addMessage(data.reply,"bot");
 
- await saveChat();
+  currentMessages.push({
+   role:"assistant",
+   content:data.reply
+  });
 
- sending = false;
- document.getElementById("send").disabled = false;
+  await saveChat();
 
- chat.scrollIntoView({behavior:"smooth",block:"end"});
+ } catch(error) {
+  console.error("VELTRIX AI:",error);
+  addMessage(
+   "Bağlantıda problem yarandı. Bir az sonra yenidən yoxla.",
+   "bot"
+  );
+ } finally {
+  sending = false;
+  document.getElementById("send").disabled = false;
+  chat.scrollIntoView({behavior:"smooth",block:"end"});
+ }
 }
-
-/* ENTER İLƏ GÖNDƏR */
-promptBox.addEventListener("keydown",function(e){
- if(e.key === "Enter" && !e.shiftKey){
-  e.preventDefault();
-  sendMessage();
- }
-});
-
-/* HESABDAN ÇIXIŞ */
-async function logout(){
- if(!confirm("Hesabdan çıxmaq istəyirsən?")) return;
-
- const {error} = await client.auth.signOut();
-
- if(error){
-  alert("Çıxış xətası: " + error.message);
-  return;
- }
-
- window.location.href = "account.html";
-}
-
-/* İSTİFADƏÇİ GİRİŞİNİ YOXLAMA */
-async function initialize(){
- const {data,error} = await client.auth.getSession();
-
- if(error){
-  alert("Hesab yoxlanarkən xəta baş verdi.");
-  return;
- }
-
- if(!data.session){
-  document.getElementById("authGate").style.display = "flex";
-  return;
- }
-
- currentUser = data.session.user;
-
- await loadProfile();
- await loadHistory();
-}
-
-/* HESAB DƏYİŞİKLİKLƏRİNİ İZLƏ */
-client.auth.onAuthStateChange((event,session)=>{
- if(event === "SIGNED_OUT"){
-  window.location.href = "account.html";
- }
-});
-
-initialize();
-</script>
-
-</body>
-</html>
