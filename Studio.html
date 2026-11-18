@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VELTRIX Studio</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  background:#080e1b;
+  color:white;
+  min-height:100vh;
+}
+
+header{
+  height:70px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid #1b2940;
+  background:#0b1425;
+}
+
+.logo{
+  font-size:23px;
+  font-weight:bold;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:#3988ff;
+}
+
+.back{
+  color:#a9caff;
+  text-decoration:none;
+  font-size:14px;
+}
+
+.container{
+  max-width:1000px;
+  margin:auto;
+  padding:35px 20px;
+}
+
+.hero{
+  text-align:center;
+  margin:20px 0 35px;
+}
+
+.hero h1{
+  font-size:34px;
+  margin-bottom:12px;
+}
+
+.hero h1 span{
+  color:#438eff;
+}
+
+.hero p{
+  color:#91a4c3;
+  font-size:14px;
+  line-height:1.6;
+}
+
+.section-title{
+  font-size:19px;
+  margin-bottom:18px;
+}
+
+.services{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+}
+
+.card{
+  background:linear-gradient(145deg,#142541,#0e1a30);
+  border:1px solid #243b60;
+  border-radius:17px;
+  padding:23px 17px;
+  min-height:155px;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.card:active{
+  transform:scale(.97);
+}
+
+.card:hover{
+  border-color:#438eff;
+  background:#172b4c;
+}
+
+.card .icon{
+  font-size:30px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  font-size:16px;
+  margin-bottom:8px;
+}
+
+.card p{
+  font-size:12px;
+  color:#9aacc8;
+  line-height:1.5;
+}
+
+.projects{
+  margin-top:35px;
+}
+
+.project-empty{
+  border:1px dashed #304361;
+  border-radius:15px;
+  padding:30px 15px;
+  text-align:center;
+  color:#91a4c3;
+  font-size:13px;
+}
+
+.project-empty .icon{
+  font-size:30px;
+  margin-bottom:12px;
+}
+
+.credit-box{
+  margin-top:35px;
+  padding:23px;
+  border-radius:18px;
+  background:linear-gradient(120deg,#123b79,#14244b,#172b50);
+  border:1px solid #315a91;
+}
+
+.credit-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.credit-label{
+  color:#c4d9ff;
+  font-size:13px;
+}
+
+.credit-number{
+  font-size:28px;
+  font-weight:bold;
+  margin-top:9px;
+}
+
+.credit-button{
+  display:block;
+  width:100%;
+  margin-top:22px;
+  padding:14px;
+  text-align:center;
+  border-radius:11px;
+  background:#3988ff;
+  color:white;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.2s;
+}
+
+.credit-button:hover{
+  background:#2674e8;
+}
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  color:#647895;
+  font-size:12px;
+  margin-top:20px;
+}
+
+@media(max-width:450px){
+  .hero h1{font-size:29px}
+  .container{padding:25px 16px}
+  .card{padding:19px 14px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">V<span>ELTRIX</span></div>
+  <a class="back" href="index.html">← Ana səhifə</a>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h1>VELTRIX <span>STUDIO</span></h1>
+    <p>
+      İdeyalarını yarat. Dizaynını formalaşdır.
+      Sərhədləri aş.
+    </p>
+  </section>
+
+  <h2 class="section-title">Yaradıcı alətlər</h2>
+
+  <section class="services">
+
+    <div class="card" onclick="openService('logo')">
+      <div class="icon">🎨</div>
+      <h3>Loqo yarat</h3>
+      <p>Brendin üçün unikal loqo dizaynı yarat.</p>
+    </div>
+
+    <div class="card" onclick="openService('image')">
+      <div class="icon">🖼️</div>
+      <h3>AI şəkli yarat</h3>
+      <p>İdeyanı təsvir et, AI şəkil yaratsın.</p>
+    </div>
+
+    <div class="card" onclick="openService('edit')">
+      <div class="icon">✨</div>
+      <h3>Şəkil redaktəsi</h3>
+      <p>Mövcud şəkillərini dəyişdir və yenilə.</p>
+    </div>
+
+    <div class="card" onclick="openService('projects')">
+      <div class="icon">📁</div>
+      <h3>Layihələrim</h3>
+      <p>Yaratdığın dizaynlara buradan bax.</p>
+    </div>
+
+  </section>
+
+  <section class="projects" id="projects">
+    <h2 class="section-title">Layihələrim</h2>
+    <div class="project-empty">
+      <div class="icon">📂</div>
+      Hələ heç bir layihən yoxdur.
+    </div>
+  </section>
+
+  <section class="credit-box">
+    <div class="credit-top">
+      <div>
+        <div class="credit-label">KREDIT BALANSIN</div>
+        <div class="credit-number" id="creditBalance">0 kredit</div>
+      </div>
+      <div style="font-size:35px">💎</div>
+    </div>
+
+    <a href="index.html#credits" class="credit-button">
+      + Kredit al
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 VELTRIX. Think Beyond Limits.
+</footer>
+
+<script>
+function openService(service){
+
+  if(service === "projects"){
+    document.getElementById("projects")
+      .scrollIntoView({behavior:"smooth"});
+    return;
+  }
+
+  const pages = {
+    logo: "logo.html",
+    image: "image.html",
+    edit: "editor.html"
+  };
+
+  if(pages[service]){
+    window.location.href = pages[service];
+  }
+}
+</script>
+
+</body>
+</html>
