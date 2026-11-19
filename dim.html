@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080d1b">
+<title>VELTRIX | DİM Sınaqları</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+ background:#080d1b;
+ color:#fff;
+ font-family:Arial,sans-serif;
+ min-height:100vh;
+}
+header{
+ padding:20px 6%;
+ display:flex;
+ justify-content:space-between;
+ align-items:center;
+ border-bottom:1px solid #202a40;
+}
+.logo{font-size:23px;font-weight:800;color:#70a5ff}
+.back{
+ color:#a9bce0;text-decoration:none;
+}
+.container{max-width:950px;margin:35px auto;padding:20px}
+h1{font-size:30px;margin-bottom:10px}
+.subtitle{color:#93a2bd;margin-bottom:28px}
+.card{
+ background:#111a2d;
+ border:1px solid #263650;
+ border-radius:17px;
+ padding:23px;
+ margin-bottom:17px;
+}
+.card h2{font-size:19px;margin-bottom:10px}
+.card p{color:#9eacc5;margin-bottom:17px}
+button{
+ border:0;border-radius:10px;
+ padding:13px 19px;
+ background:#3978ed;color:white;
+ font-weight:bold;cursor:pointer;
+}
+button:hover{filter:brightness(1.12)}
+.secondary{background:#263650}
+.hidden{display:none!important}
+.topline{
+ display:flex;justify-content:space-between;
+ gap:12px;flex-wrap:wrap;
+ color:#9eacc5;margin-bottom:18px;
+}
+.progress{
+ height:7px;background:#25324a;
+ border-radius:10px;overflow:hidden;
+ margin-bottom:25px;
+}
+.progress div{
+ height:100%;background:#538cff;width:0%;
+}
+.question{font-size:21px;line-height:1.5;margin-bottom:22px}
+.option{
+ display:flex;align-items:center;gap:12px;
+ padding:15px;margin:10px 0;
+ background:#17243a;border:1px solid #30415d;
+ border-radius:11px;cursor:pointer;
+}
+.option:has(input:checked){
+ border-color:#5793ff;background:#1c3152;
+}
+.option input{accent-color:#5793ff}
+.actions{
+ display:flex;justify-content:space-between;
+ gap:10px;margin-top:25px;
+}
+.stat-grid{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:12px;margin:22px 0;
+}
+.stat{
+ background:#17243a;border-radius:12px;
+ padding:17px;text-align:center;
+}
+.stat strong{display:block;font-size:25px;margin-bottom:5px}
+.stat span{font-size:13px;color:#a9b8d0}
+.review{
+ padding:17px 0;border-bottom:1px solid #2a3850;
+}
+.review p{margin:9px 0;color:#aebbd0;line-height:1.5}
+.correct{color:#65d99a}
+.wrong{color:#ff8585}
+@media(max-width:600px){
+ .container{padding:15px;margin:20px auto}
+ h1{font-size:25px}
+ .stat-grid{grid-template-columns:1fr 1fr}
+ .question{font-size:18px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+ <div class="logo">VELTRIX</div>
+ <a class="back" href="index.html">← Mağazaya qayıt</a>
+</header>
+
+<div class="container">
+
+<section id="testList">
+ <h1>DİM Onlayn Sınaqları</h1>
+ <p class="subtitle">Biliklərini yoxla və nəticələrini təhlil et.</p>
+
+ <div class="card">
+  <h2>Riyaziyyat — Nümunə sınaq</h2>
+  <p>5 sual · Nümunə test</p>
+  <button onclick="startTest()">Sınağa başla →</button>
+ </div>
+</section>
+
+<section id="exam" class="hidden">
+ <div class="topline">
+  <span id="questionNumber">Sual 1 / 5</span>
+  <span id="answered">Cavablandırılıb: 0</span>
+ </div>
+
+ <div class="progress"><div id="progressBar"></div></div>
+
+ <div class="card">
+  <h2 id="topic">Riyaziyyat</h2>
+  <div class="question" id="questionText"></div>
+  <div id="options"></div>
+
+  <div class="actions">
+   <button class="secondary" onclick="moveQuestion(-1)">← Əvvəlki</button>
+   <button onclick="moveQuestion(1)">Növbəti →</button>
+  </div>
+ </div>
+
+ <button style="background:#d34b59" onclick="finishTest()">Sınağı bitir</button>
+</section>
+
+<section id="results" class="hidden">
+ <h1>Sınaq nəticəsi</h1>
+ <p class="subtitle">Cavabların yoxlanıldı.</p>
+
+ <div class="stat-grid">
+  <div class="stat"><strong id="correctCount">0</strong><span>Düzgün</span></div>
+  <div class="stat"><strong id="wrongCount">0</strong><span>Yanlış</span></div>
+  <div class="stat"><strong id="blankCount">0</strong><span>Boş</span></div>
+ </div>
+
+ <div class="card">
+  <h2>Ümumi nəticə</h2>
+  <div id="percentage" style="font-size:35px;color:#70a5ff;margin:15px 0">0%</div>
+  <p id="resultMessage"></p>
+ </div>
+
+ <div class="card">
+  <h2>Cavabların izahı</h2>
+  <div id="review"></div>
+ </div>
+
+ <button onclick="backToList()">Sınaqlar siyahısına qayıt</button>
+</section>
+
+</div>
+
+<script>
+const questions = [
+ {
+  topic:"Cəbr",
+  question:"2x + 6 = 16 tənliyində x neçədir?",
+  options:["3","4","5","6"],
+  correct:2,
+  explanation:"2x + 6 = 16. Buradan 2x = 10 və x = 5."
+ },
+ {
+  topic:"Faiz",
+  question:"200 ədədinin 20 faizi neçədir?",
+  options:["20","30","40","50"],
+  correct:2,
+  explanation:"200 × 20 / 100 = 40."
+ },
+ {
+  topic:"Həndəsə",
+  question:"Tərəfləri 4 sm və 7 sm olan düzbucaqlının sahəsi neçədir?",
+  options:["11","22","28","32"],
+  correct:2,
+  explanation:"Düzbucaqlının sahəsi 4 × 7 = 28 sm²."
+ },
+ {
+  topic:"Qüvvət",
+  question:"2³ ifadəsinin qiyməti neçədir?",
+  options:["6","7","8","9"],
+  correct:2,
+  explanation:"2³ = 2 × 2 × 2 = 8."
+ },
+ {
+  topic:"Tənlik",
+  question:"3x = 21 olarsa, x neçədir?",
+  options:["5","6","7","8"],
+  correct:2,
+  explanation:"Hər iki tərəfi 3-ə bölürük: x = 21 / 3 = 7."
+ }
+];
+
+let currentQuestion=0;
+let answers={};
+
+function show(id){
+ document.getElementById("testList").classList.add("hidden");
+ document.getElementById("exam").classList.add("hidden");
+ document.getElementById("results").classList.add("hidden");
+ document.getElementById(id).classList.remove("hidden");
+}
+
+function startTest(){
+ currentQuestion=0;
+ answers={};
+ show("exam");
+ renderQuestion();
+}
+
+function renderQuestion(){
+ const q=questions[currentQuestion];
+
+ document.getElementById("questionNumber").textContent=
+ "Sual "+(currentQuestion+1)+" / "+questions.length;
+
+ document.getElementById("topic").textContent=q.topic;
+ document.getElementById("questionText").textContent=q.question;
+
+ document.getElementById("progressBar").style.width=
+ ((currentQuestion+1)/questions.length*100)+"%";
+
+ document.getElementById("answered").textContent=
+ "Cavablandırılıb: "+Object.keys(answers).length;
+
+ document.getElementById("options").innerHTML="";
+
+ q.options.forEach((option,index)=>{
+  const label=document.createElement("label");
+  label.className="option";
+
+  const radio=document.createElement("input");
+  radio.type="radio";
+  radio.name="answer";
+  radio.checked=answers[currentQuestion]===index;
+
+  radio.addEventListener("change",()=>{
+   answers[currentQuestion]=index;
+   document.getElementById("answered").textContent=
+   "Cavablandırılıb: "+Object.keys(answers).length;
+  });
+
+  const span=document.createElement("span");
+  span.textContent=String.fromCharCode(65+index)+") "+option;
+
+  label.append(radio,span);
+  document.getElementById("options").appendChild(label);
+ });
+}
+
+function moveQuestion(direction){
+ const next=currentQuestion+direction;
+
+ if(next<0 || next>=questions.length)return;
+
+ currentQuestion=next;
+ renderQuestion();
+}
+
+function finishTest(){
+ if(!confirm("Sınağı bitirmək istəyirsən?"))return;
+
+ let correct=0;
+ let wrong=0;
+ let blank=0;
+
+ questions.forEach((q,index)=>{
+  if(answers[index]===undefined)blank++;
+  else if(answers[index]===q.correct)correct++;
+  else wrong++;
+ });
+
+ const percent=Math.round(correct/questions.length*100);
+
+ document.getElementById("correctCount").textContent=correct;
+ document.getElementById("wrongCount").textContent=wrong;
+ document.getElementById("blankCount").textContent=blank;
+ document.getElementById("percentage").textContent=percent+"%";
+
+ document.getElementById("resultMessage").textContent=
+ "Sən "+questions.length+" sualdan "+correct+" düzgün cavab verdin.";
+
+ const review=document.getElementById("review");
+ review.innerHTML="";
+
+ questions.forEach((q,index)=>{
+  const userAnswer=answers[index];
+  const isCorrect=userAnswer===q.correct;
+
+  const item=document.createElement("div");
+  item.className="review";
+
+  const title=document.createElement("strong");
+  title.textContent=(index+1)+". "+q.question;
+
+  const status=document.createElement("p");
+  status.className=userAnswer===undefined?"wrong":isCorrect?"correct":"wrong";
+  status.textContent=userAnswer===undefined
+   ?"Cavab verilməyib"
+   :isCorrect?"Düzgün cavabdır":"Yanlış cavabdır";
+
+  const answer=document.createElement("p");
+  answer.textContent="Düzgün cavab: "+q.options[q.correct];
+
+  const explanation=document.createElement("p");
+  explanation.textContent="İzah: "+q.explanation;
+
+  item.append(title,status,answer,explanation);
+  review.appendChild(item);
+ });
+
+ show("results");
+}
+
+function backToList(){
+ show("testList");
+}
+</script>
+
+</body>
+</html>
