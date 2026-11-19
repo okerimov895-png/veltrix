@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b19">
+<title>Psixologiya — VELTRIX</title>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #050b19;
+    color: #f4f7ff;
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    height: 70px;
+    padding: 0 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #17243b;
+    background: #080f20;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.logo span {
+    color: #4e9cff;
+}
+
+.back {
+    color: #a9bad5;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back:hover {
+    color: #fff;
+}
+
+.container {
+    width: 86%;
+    max-width: 1150px;
+    margin: auto;
+}
+
+.hero {
+    padding: 65px 0 35px;
+}
+
+.tag {
+    display: inline-block;
+    padding: 7px 13px;
+    background: #102747;
+    color: #62aaff;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 17px;
+}
+
+.hero h1 {
+    font-size: clamp(30px, 5vw, 44px);
+    margin-bottom: 14px;
+}
+
+.hero h1 span {
+    color: #559eff;
+}
+
+.hero p {
+    max-width: 600px;
+    color: #9cabc3;
+    line-height: 1.7;
+    font-size: 15px;
+}
+
+.section-title {
+    margin: 25px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.section-title h2 {
+    font-size: 21px;
+}
+
+.count {
+    color: #8da4c5;
+    font-size: 13px;
+}
+
+.test-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    padding-bottom: 70px;
+}
+
+.test-card {
+    background: linear-gradient(145deg, #101c32, #0a1427);
+    border: 1px solid #1b2c48;
+    border-radius: 17px;
+    padding: 23px;
+    transition: .25s;
+}
+
+.test-card:hover {
+    transform: translateY(-4px);
+    border-color: #397bc5;
+}
+
+.test-icon {
+    width: 47px;
+    height: 47px;
+    display: grid;
+    place-items: center;
+    border-radius: 13px;
+    background: #142e50;
+    font-size: 23px;
+    margin-bottom: 20px;
+}
+
+.test-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.test-card p {
+    color: #9cabc3;
+    font-size: 13px;
+    line-height: 1.6;
+    min-height: 42px;
+}
+
+.test-info {
+    display: flex;
+    gap: 14px;
+    margin: 18px 0;
+    color: #83a1c9;
+    font-size: 12px;
+    flex-wrap: wrap;
+}
+
+.test-button {
+    width: 100%;
+    padding: 12px;
+    background: #183b67;
+    color: #9fcaff;
+    border: 1px solid #28588f;
+    border-radius: 9px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: not-allowed;
+    opacity: .8;
+}
+
+.empty, .loading, .error {
+    text-align: center;
+    padding: 55px 20px;
+    border: 1px dashed #263955;
+    border-radius: 15px;
+    color: #9cabc3;
+    grid-column: 1 / -1;
+    line-height: 1.8;
+}
+
+.empty-icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+footer {
+    border-top: 1px solid #17243b;
+    padding: 25px;
+    text-align: center;
+    color: #71829e;
+    font-size: 12px;
+}
+
+@media(max-width:600px) {
+    header {
+        padding: 0 5%;
+        height: 62px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .hero {
+        padding-top: 45px;
+    }
+
+    .test-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">VELTRIX<span>.</span></div>
+    <a class="back" href="index.html">← Mağazaya qayıt</a>
+</header>
+
+<main class="container">
+
+    <section class="hero">
+        <div class="tag">VELTRIX · PSİXOLOGİYA</div>
+        <h1>Özünü daha yaxşı <span>tanı.</span></h1>
+        <p>
+            Müxtəlif psixologiya testləri ilə davranışlarını,
+            düşüncə tərzini və emosional bacarıqlarını araşdır.
+            Nəticələr özünü tanımaq üçündür, tibbi diaqnoz deyil.
+        </p>
+    </section>
+
+    <section>
+        <div class="section-title">
+            <h2>Testlər</h2>
+            <span class="count" id="testCount">Yüklənir...</span>
+        </div>
+
+        <div class="test-grid" id="testGrid">
+            <div class="loading">Testlər yüklənir...</div>
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    © 2026 VELTRIX — Think Beyond Limits
+</footer>
+
+<script>
+// Supabase məlumatları
+const SUPABASE_URL = "https://yekcqqxgyrgreketnfez.supabase.co";
+
+// Buraya index.html-də istifadə etdiyin anon / publishable key-i yaz.
+const SUPABASE_ANON_KEY = "BURAYA_ANON_KEY_YAZ";
+
+const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+);
+
+const grid = document.getElementById("testGrid");
+const count = document.getElementById("testCount");
+
+async function loadTests() {
+    grid.innerHTML = '<div class="loading">Testlər yüklənir...</div>';
+
+    try {
+        const { data, error } = await supabaseClient
+            .from("tests")
+            .select("id, title, description, subject, duration_minutes")
+            .eq("subject", "Psixologiya")
+            .eq("is_published", true)
+            .order("created_at", { ascending: false });
+
+        if (error) throw error;
+
+        count.textContent = `${data.length} test`;
+
+        if (!data.length) {
+            grid.innerHTML = `
+                <div class="empty">
+                    <div class="empty-icon">🧠</div>
+                    <h3>Testlər hazırlanır</h3>
+                    <p>Psixologiya testləri tezliklə burada olacaq.</p>
+                </div>
+            `;
+            return;
+        }
+
+        grid.innerHTML = "";
+
+        data.forEach(test => {
+            const card = document.createElement("article");
+            card.className = "test-card";
+
+            const icon = document.createElement("div");
+            icon.className = "test-icon";
+            icon.textContent = "🧠";
+
+            const title = document.createElement("h3");
+            title.textContent = test.title || "Adsız test";
+
+            const description = document.createElement("p");
+            description.textContent =
+                test.description || "Bu test özünü daha yaxşı tanımağa kömək edir.";
+
+            const info = document.createElement("div");
+            info.className = "test-info";
+
+            const duration = document.createElement("span");
+            duration.textContent = `◷ ${test.duration_minutes || 0} dəqiqə`;
+
+            info.appendChild(duration);
+
+            const button = document.createElement("button");
+            button.className = "test-button";
+            button.textContent = "Tezliklə";
+
+            card.append(icon, title, description, info, button);
+            grid.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Testlərin yüklənməsi xətası:", error);
+
+        count.textContent = "Xəta";
+
+        grid.innerHTML = `
+            <div class="error">
+                <h3>Testləri yükləmək mümkün olmadı</h3>
+                <p>Supabase bağlantısını və cədvəl icazələrini yoxlamaq lazımdır.</p>
+            </div>
+        `;
+    }
+}
+
+loadTests();
+</script>
+
+</body>
+</html>
