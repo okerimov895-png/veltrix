@@ -1,245 +1,1009 @@
-<!DOCTYPE html>  <html lang="az">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<meta name="theme-color" content="#050b19">  
-<meta name="description" content="VELTRIX STORE — Think Beyond Limits">  
-<title>VELTRIX STORE — Think Beyond Limits</title>  
-<style>  
-:root{--bg:#050b19;--panel:#0d1b35;--panel2:#122747;--line:#233e68;--blue:#0878ff;--cyan:#36a9ff;--text:#f4f7ff;--muted:#a9bddb}  
-*{box-sizing:border-box;margin:0;padding:0}  
-html{scroll-behavior:smooth;scroll-padding-top:90px}  
-body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}  
-a{color:inherit;text-decoration:none}button,input{font:inherit}button{cursor:pointer}  
-header{height:78px;padding:0 5%;display:flex;align-items:center;justify-content:space-between;gap:22px;position:sticky;top:0;z-index:30;background:#071126ed;border-bottom:1px solid #1c3152;backdrop-filter:blur(16px)}  
-.logo{font-size:25px;font-weight:900;letter-spacing:-1px;white-space:nowrap}.logo span{color:#269bff}  
-nav{display:flex;align-items:center;gap:23px;color:#c2d1e9;font-size:13px}  
-nav a:hover{color:#54b4ff}  
-.header-right{display:flex;align-items:center;gap:18px}  
-.wallet-top{display:flex;align-items:center;gap:12px;padding:8px 10px 8px 14px;border:1px solid #294875;border-radius:15px;background:#102443;white-space:nowrap}  
-.wallet-top .wallet-icon{font-size:20px;color:#65baff}  
-.wallet-top strong{font-size:14px}  
-.plus-btn{width:32px;height:32px;border:0;border-radius:10px;background:var(--blue);color:white;font-size:23px;line-height:1}  
-.icon-btn,.profile-btn,.menu-btn{width:40px;height:40px;border:1px solid #29436b;border-radius:50%;background:#0d1b35;color:white;display:grid;place-items:center;font-size:18px}  
-.profile-wrap{position:relative}.profile-dropdown{display:none;position:absolute;right:0;top:50px;width:265px;padding:15px;background:#10203c;border:1px solid #34517e;border-radius:15px;box-shadow:0 15px 40px #0009;z-index:50}  
-.profile-dropdown.active{display:block}.profile-info{display:flex;gap:11px;align-items:center;padding-bottom:13px;border-bottom:1px solid #2b4163;margin-bottom:8px}  
-.profile-avatar{width:38px;height:38px;border-radius:50%;background:#28558d;display:grid;place-items:center;overflow:hidden;font-weight:bold}  
-.profile-avatar img{width:100%;height:100%;object-fit:cover}  
-.profile-info strong,.profile-info small{display:block}.profile-info small{font-size:11px;color:var(--muted);overflow-wrap:anywhere}  
-.profile-item{width:100%;padding:10px;border:0;border-radius:8px;background:transparent;color:#dce8fb;text-align:left;font-size:13px}  
-.profile-item:hover{background:#1b355b}.profile-item.danger{color:#ff9999}  
-.login-link{display:block;text-align:center;margin-top:8px;padding:10px;border-radius:8px;background:#176de0;font-size:13px}  
-.menu-btn{display:none}  
-main{max-width:1500px;margin:auto}  
-.hero{margin:0 0 26px;padding:42px 5% 38px;min-height:350px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:25px;position:relative;overflow:hidden;border:1px solid #163d78;border-radius:0 0 28px 28px;background:radial-gradient(ellipse at 78% 48%,#064da966,transparent 42%),linear-gradient(115deg,#08152d,#0d2445 70%,#07152d)}  
-.tag{display:inline-block;padding:6px 14px;border-radius:30px;background:#073b7d;color:#64baff;font-size:12px;font-weight:800;letter-spacing:.7px;margin-bottom:15px}  
-.hero h1{font-size:clamp(36px,5vw,64px);line-height:1.08;letter-spacing:-2px;max-width:680px}.hero h1 span{color:#279cff}  
-.hero p{font-size:17px;color:#b8cbe6;margin:17px 0 23px;max-width:590px}  
-.hero-actions{display:flex;gap:12px;flex-wrap:wrap}  
-.action-btn{border:1px solid #2c568e;border-radius:13px;padding:13px 20px;font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:9px}  
-.action-primary{background:linear-gradient(110deg,#087bff,#1552d5);border-color:#168aff;box-shadow:0 8px 25px #006bff33}  
-.action-secondary{background:#0b1b35}  
-.action-btn:hover,.promo-button:hover{filter:brightness(1.12);transform:translateY(-2px)}  
-.hero-art{min-height:235px;display:grid;place-items:center;position:relative}  
-.hero-art .book{font-size:125px;filter:drop-shadow(0 0 25px #078aff);transform:rotate(-8deg)}  
-.hero-art .orbit{position:absolute;width:90%;height:90px;border:2px solid #087bff;border-radius:50%;transform:rotate(-12deg);box-shadow:0 0 18px #087bff}  
-.hero-art .float{position:absolute;color:#72c6ff;font-size:36px;filter:drop-shadow(0 0 10px #168bff)}  
-.hero-art .f1{top:12px;left:17%}.hero-art .f2{top:3px;right:17%}.hero-art .f3{bottom:10px;right:8%}  
-.promo{margin:0 5% 35px;padding:22px 27px;border:1px solid #24549a;border-radius:22px;background:radial-gradient(circle at 12% 50%,#087bff55,transparent 23%),linear-gradient(105deg,#102c59,#0d1c39 75%);display:flex;align-items:center;justify-content:space-between;gap:18px}  
-.promo h2{font-size:25px;margin-bottom:4px}.promo p{color:#c2d4ef;font-size:14px}.promo-button{padding:12px 20px;border:0;border-radius:12px;background:#087bff;color:white;font-weight:800;white-space:nowrap;transition:.2s}  
-.section{padding:12px 5% 36px}  
-.section-title{display:flex;align-items:center;gap:18px;margin-bottom:18px}.section-title h2{font-size:27px;white-space:nowrap}.section-title:after,.section-title:before{content:"";height:1px;background:#24416b;flex:1}  
-.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}  
-.category-card{min-height:150px;padding:19px;border:1px solid #203e69;border-radius:18px;background:linear-gradient(145deg,#11294b,#0d1b35);color:white;text-align:left;transition:.22s;display:flex;flex-direction:column;align-items:flex-start;gap:8px}  
-.category-card:hover,.category-card.active{border-color:#168bff;transform:translateY(-3px);box-shadow:0 10px 28px #006bff20}  
-.category-card .cat-icon{font-size:31px;color:#43aaff}.category-card strong{font-size:17px}.category-card small{font-size:12px;color:#b1c6e4}  
-.products-toolbar{display:flex;gap:10px;max-width:720px;margin:0 0 18px}  
-.products-toolbar input,.products-toolbar select{min-width:0;padding:11px 13px;border:1px solid #29436b;border-radius:10px;background:#0c1a32;color:white;outline:none}  
-.products-toolbar input{flex:1}.products-toolbar select{width:175px}  
-.products-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}  
-.product-card{display:grid;grid-template-columns:34% 1fr;gap:16px;padding:12px;border:1px solid #203e69;border-radius:18px;background:linear-gradient(135deg,#102748,#0c1931);min-width:0}  
-.product-cover{min-height:170px;border-radius:13px;background:linear-gradient(145deg,#123f80,#10294d);display:grid;place-items:center;overflow:hidden}  
-.product-cover img{width:100%;height:100%;object-fit:cover}.product-placeholder{font-size:48px;color:#82caff}  
-.product-content{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:4px 2px}  
-.product-content .kind{font-size:11px;color:#7fc4ff;background:#103c78;border-radius:20px;padding:3px 9px}  
-.product-content h3{font-size:18px;margin:8px 0 4px}.product-content p{font-size:12px;color:#b1c5e2;line-height:1.45;overflow-wrap:anywhere}  
-.product-bottom{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:12px}  
-.product-price{font-size:19px;font-weight:800;color:#43aaff;white-space:nowrap}  
-.product-status{font-size:11px;color:#b7c8e2;border:1px solid #35547d;padding:7px 10px;border-radius:22px}  
-.empty-products{grid-column:1/-1;text-align:center;padding:35px 15px;background:#0d1b35;border:1px solid #203e69;border-radius:14px;color:var(--muted)}  
-.library{margin:12px 5% 55px;padding:24px;border:1px solid #24549a;border-radius:21px;background:radial-gradient(circle at 10% 50%,#087bff40,transparent 28%),linear-gradient(110deg,#10284d,#0b1a35)}  
-.library-inner{display:grid;grid-template-columns:170px 1fr auto;align-items:center;gap:22px}  
-.library-art{font-size:100px;text-align:center;color:#66baff;filter:drop-shadow(0 0 17px #087bff)}  
-.library h2{font-size:27px}.library p{font-size:14px;color:#c0d1eb;max-width:520px;margin:5px 0 14px}  
-.library-tags{display:flex;flex-wrap:wrap;gap:8px}.library-tags span{padding:8px 12px;border-radius:30px;background:#142f56;color:#c6d9f4;font-size:12px}  
-.library-link{border:1px solid #168bff;background:transparent;color:white;border-radius:30px;padding:11px 16px;white-space:nowrap}  
-.about,.contact{padding:55px 7%;text-align:center;background:#091326;border-top:1px solid #1b3152}  
-.about p,.contact p{color:var(--muted);max-width:700px;margin:10px auto}  
-footer{padding:28px 5%;border-top:1px solid #1c3152;background:#040916;color:#9eb1d0}  
-.footer-top{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}  
-.footer-brand strong{font-size:27px;color:#eaf2ff}.footer-links{display:flex;gap:20px;font-size:13px}  
-footer .copyright{text-align:center;border-top:1px solid #1c3152;margin-top:20px;padding-top:17px;font-size:12px}  
-.modal-overlay{display:none;position:fixed;inset:0;z-index:70;background:#000b;align-items:center;justify-content:center;padding:18px}  
-.modal-overlay.active{display:flex}.modal{width:100%;max-width:420px;padding:23px;background:#10203c;border:1px solid #34517e;border-radius:16px;box-shadow:0 20px 60px #000a}  
-.modal h2{font-size:21px}.modal-desc{font-size:12px;color:var(--muted);margin:4px 0 17px}  
-.modal label{display:block;margin:12px 0 5px;font-size:13px;color:#c7d7ed}  
-.modal input{width:100%;padding:12px;background:#071329;border:1px solid #34517e;border-radius:8px;color:white;outline:none}  
-.modal-buttons{display:flex;gap:10px;margin-top:18px}.modal-buttons button{flex:1;padding:11px;border:0;border-radius:8px;font-weight:bold}  
-.save-btn{background:#087bff;color:white}.cancel-btn{background:#263c5e;color:white}.modal-message{min-height:18px;margin-top:10px;font-size:12px;color:#9fc8ff}  
-@media(max-width:1050px){nav{gap:12px}.hero{grid-template-columns:1fr .7fr}.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}  
-@media(max-width:760px){header{height:68px;padding:0 4%}.logo{font-size:21px}.menu-btn{display:grid}.header-right{gap:9px}.wallet-top{padding:6px 7px 6px 10px;gap:7px}.wallet-top strong{font-size:12px}.wallet-icon{display:none}.plus-btn{width:29px;height:29px}nav{display:none;position:absolute;left:0;right:0;top:68px;padding:17px 5%;background:#09162c;border-bottom:1px solid #29436b;flex-direction:column;align-items:flex-start}nav.active{display:flex}.hero{padding:34px 5% 28px;grid-template-columns:1fr;min-height:auto}.hero-art{min-height:130px}.hero-art .book{font-size:85px}.promo{margin:0 4% 25px;padding:18px;align-items:flex-start;flex-direction:column}.promo h2{font-size:21px}.promo-button{width:100%}.section{padding:10px 4% 28px}.section-title h2{font-size:23px}.category-card{min-height:135px;padding:15px}.products-grid{grid-template-columns:1fr}.product-card{grid-template-columns:34% 1fr}.product-cover{min-height:150px}.library{margin:10px 4% 38px;padding:18px}.library-inner{grid-template-columns:75px 1fr;gap:13px}.library-art{font-size:62px}.library h2{font-size:23px}.library-link{grid-column:1/-1;width:100%}.footer-top{justify-content:center;text-align:center}.footer-links{justify-content:center;flex-wrap:wrap}}  
-@media(max-width:420px){.logo{font-size:18px}.header-right{gap:6px}.icon-btn{display:none}.profile-btn{width:34px;height:34px}.wallet-top strong{font-size:11px}.category-card strong{font-size:15px}.category-card small{font-size:11px}.products-toolbar{flex-direction:column}.products-toolbar select{width:100%}.product-content h3{font-size:16px}.product-price{font-size:16px}.product-status{padding:6px 7px}}  
-</style>  
-</head>  
-<body>  
-<header>  
- <a href="#home" class="logo">VELTRIX <span>STORE</span></a>  
- <nav id="navigation">  
-  <a href="#home" onclick="closeMenu()">Mağaza</a>  
-  <a href="#library" onclick="closeMenu()">Kitabxanam</a>  
-  <a href="ai.html" onclick="closeMenu()">VELTRIX AI</a>  
-  <a href="#about" onclick="closeMenu()">Haqqımızda</a>  
-  <a href="#contact" onclick="closeMenu()">Əlaqə</a>  
- </nav>  
- <div class="header-right">  
-  <div class="wallet-top"><span class="wallet-icon">▣</span><strong id="walletBalance">— kredit</strong><button class="plus-btn" onclick="buyCredits()" aria-label="Kredit al">+</button></div>  
-  <button class="icon-btn" onclick="focusSearch()" aria-label="Axtar">⌕</button>  
-  <div class="profile-wrap">  
-   <button class="profile-btn" onclick="toggleProfile(event)" aria-label="Profil"><span class="profile-avatar" id="headerAvatar">?</span></button>  
-   <div class="profile-dropdown" id="profileDropdown">  
-    <div class="profile-info"><span class="profile-avatar" id="dropdownAvatar">?</span><div><strong id="dropdownName">Qonaq</strong><small id="dropdownEmail">Hesaba daxil olun</small></div></div>  
-    <button class="profile-item" id="changePhotoBtn" onclick="chooseAvatar()">📷 Profil şəklini dəyiş</button>  
-    <button class="profile-item" onclick="openSettings()">⚙️ Profil parametrləri</button>  
-    <button class="profile-item" onclick="openPasswordSettings()">🔒 Şifrəni dəyiş</button>  
-    <button class="profile-item danger" id="logoutBtn" onclick="logout()" style="display:none">↪ Hesabdan çıxış</button>  
-    <a href="account.html" class="login-link" id="loginLink">Daxil ol / Qeydiyyat</a>  
-   </div>  
-  </div>  
-  <button class="menu-btn" onclick="toggleMenu()" aria-label="Menyunu aç">☰</button>  
- </div>  
-</header>  
-<main>  
- <section class="hero" id="home">  
-  <div>  
-   <div class="tag">DIGITAL MARKETPLACE</div>  
-   <h1>Bilik və texnologiya bir <span>məkanda.</span></h1>  
-   <p>Elektron kitablar, sınaqlar və rəqəmsal məhsullar.</p>  
-   <div class="hero-actions">  
-    <a href="#products" class="action-btn action-primary">▣ Məhsullara bax →</a>  
-    <a href="ai.html" class="action-btn action-secondary">✦ VELTRIX AI</a>  
-   </div>  
-  </div>  
-  <div class="hero-art" aria-hidden="true"><div class="orbit"></div><span class="book">📖</span><span class="float f1">🎓</span><span class="float f2">▤</span><span class="float f3">⌘</span></div>  
- </section>  
- <section class="promo" id="discover">  
-  <div><h2>✧ Yeni imkanları kəşf et!</h2><p>Balansını artır, yeni məhsulları kəşf et və VELTRIX dünyasından faydalan.</p></div>  
-  <button class="promo-button" onclick="buyCredits()">Kəşf et →</button> 
- </section>  
- <section class="section" id="categories">  
-  <div class="section-title"><h2>Kateqoriyalar</h2></div>  
-  <div class="category-grid">  
-   
-<button class="category-card" data-kind="books" onclick="selectStoreCategory('books',this)">
-    <span class="cat-icon">♧</span>
-    <strong>Elektron kitablar</strong>
-    <small>PDF və tədris materialları</small>
-</button>
 
-<button class="category-card" data-kind="dim" onclick="location.href='dim.html'">
-    <span class="cat-icon">♧</span>
-    <strong>DİM sınaqları</strong>
-    <small>Testlər və çalışmalar</small>
-</button>
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b19">
+<meta name="description" content="VELTRIX STORE — Think Beyond Limits">
+<title>VELTRIX STORE — Think Beyond Limits</title>
 
-<button class="category-card" data-kind="psychology" onclick="location.href='psixologiya.html'">
-    <span class="cat-icon">◎</span>
-    <strong>Psixologiya</strong>
-    <small>Bilik və inkişaf</small>
-</button>
+<style>
+:root {
+  --bg:#050b19;
+  --panel:#0d1b35;
+  --panel2:#122747;
+  --line:#233e68;
+  --blue:#0878ff;
+  --cyan:#36a9ff;
+  --text:#f4f7ff;
+  --muted:#a9bddb;
+  --green:#20c997;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+a{color:inherit;text-decoration:none}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+header{
+  height:75px;padding:0 5%;display:flex;align-items:center;
+  justify-content:space-between;gap:20px;position:sticky;top:0;
+  z-index:30;background:#071126ed;border-bottom:1px solid #1c3152;
+  backdrop-filter:blur(16px)
+}
+.logo{font-size:24px;font-weight:900;letter-spacing:-1px;white-space:nowrap}
+.logo span{color:#269bff}
+nav{display:flex;align-items:center;gap:20px;color:#c2d1e9;font-size:13px}
+nav a:hover,.footer-links a:hover{color:#54b4ff}
+.header-right{display:flex;align-items:center;gap:12px}
+.wallet-top{
+  display:flex;align-items:center;gap:10px;padding:7px 9px 7px 13px;
+  border:1px solid #294875;border-radius:14px;background:#102443;white-space:nowrap
+}
+.wallet-top strong{font-size:13px}
+.plus-btn{
+  width:31px;height:31px;border:0;border-radius:9px;
+  background:var(--blue);color:white;font-size:22px
+}
+.icon-btn,.profile-btn,.menu-btn{
+  width:39px;height:39px;border:1px solid #29436b;border-radius:50%;
+  background:#0d1b35;color:white;display:grid;place-items:center;font-size:18px
+}
+.profile-wrap{position:relative}
+.profile-dropdown{
+  display:none;position:absolute;right:0;top:49px;width:265px;padding:15px;
+  background:#10203c;border:1px solid #34517e;border-radius:15px;
+  box-shadow:0 15px 40px #0009;z-index:50
+}
+.profile-dropdown.active{display:block}
+.profile-info{display:flex;gap:11px;align-items:center;padding-bottom:13px;border-bottom:1px solid #2b4163;margin-bottom:8px}
+.profile-avatar{
+  width:38px;height:38px;border-radius:50%;background:#28558d;
+  display:grid;place-items:center;overflow:hidden;font-weight:bold
+}
+.profile-avatar img{width:100%;height:100%;object-fit:cover}
+.profile-info strong,.profile-info small{display:block}
+.profile-info small{font-size:11px;color:var(--muted);overflow-wrap:anywhere}
+.profile-item{
+  width:100%;padding:10px;border:0;border-radius:8px;background:transparent;
+  color:#dce8fb;text-align:left;font-size:13px
+}
+.profile-item:hover{background:#1b355b}
+.profile-item.danger{color:#ff9999}
+.login-link{
+  display:block;text-align:center;margin-top:8px;padding:10px;
+  border-radius:8px;background:#176de0;font-size:13px
+}
+.menu-btn{display:none}
+main{max-width:1500px;margin:auto}
+.hero{
+  margin:0 0 27px;padding:45px 5% 40px;min-height:350px;
+  display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:25px;
+  position:relative;overflow:hidden;border:1px solid #163d78;
+  border-radius:0 0 28px 28px;
+  background:radial-gradient(ellipse at 78% 48%,#064da966,transparent 42%),
+  linear-gradient(115deg,#08152d,#0d2445 70%,#07152d)
+}
+.tag{
+  display:inline-block;padding:6px 14px;border-radius:30px;background:#073b7d;
+  color:#64baff;font-size:12px;font-weight:800;letter-spacing:.7px;margin-bottom:15px
+}
+.hero h1{font-size:clamp(36px,5vw,64px);line-height:1.08;letter-spacing:-2px;max-width:680px}
+.hero h1 span{color:#279cff}
+.hero p{font-size:16px;color:#b8cbe6;margin:17px 0 23px;max-width:590px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+.action-btn{
+  border:1px solid #2c568e;border-radius:13px;padding:13px 20px;
+  font-weight:750;display:inline-flex;align-items:center;justify-content:center;gap:9px
+}
+.action-primary{background:linear-gradient(110deg,#087bff,#1552d5);border-color:#168aff}
+.action-secondary{background:#0b1b35}
+.action-btn:hover,.promo-button:hover{filter:brightness(1.12);transform:translateY(-2px)}
+.hero-art{min-height:235px;display:grid;place-items:center;position:relative}
+.hero-art .book{font-size:125px;filter:drop-shadow(0 0 25px #078aff);transform:rotate(-8deg)}
+.hero-art .orbit{
+  position:absolute;width:90%;height:90px;border:2px solid #087bff;
+  border-radius:50%;transform:rotate(-12deg);box-shadow:0 0 18px #087bff
+}
+.hero-art .float{position:absolute;color:#72c6ff;font-size:36px;filter:drop-shadow(0 0 10px #168bff)}
+.hero-art .f1{top:12px;left:17%}
+.hero-art .f2{top:3px;right:17%}
+.hero-art .f3{bottom:10px;right:8%}
+.promo{
+  margin:0 5% 35px;padding:22px 27px;border:1px solid #24549a;
+  border-radius:22px;background:radial-gradient(circle at 12% 50%,#087bff55,transparent 23%),
+  linear-gradient(105deg,#102c59,#0d1c39 75%);
+  display:flex;align-items:center;justify-content:space-between;gap:18px
+}
+.promo h2{font-size:24px;margin-bottom:4px}
+.promo p{color:#c2d4ef;font-size:14px}
+.promo-button{
+  padding:12px 20px;border:0;border-radius:12px;background:#087bff;
+  color:white;font-weight:800;white-space:nowrap;transition:.2s
+}
+.section{padding:12px 5% 36px}
+.section-title{display:flex;align-items:center;gap:18px;margin-bottom:18px}
+.section-title h2{font-size:27px;white-space:nowrap}
+.section-title:after,.section-title:before{content:"";height:1px;background:#24416b;flex:1}
+.category-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}
+.category-card{
+  min-height:150px;padding:19px;border:1px solid #203e69;border-radius:18px;
+  background:linear-gradient(145deg,#11294b,#0d1b35);color:white;text-align:left;
+  transition:.22s;display:flex;flex-direction:column;align-items:flex-start;gap:8px
+}
+.category-card:hover,.category-card.active{
+  border-color:#168bff;transform:translateY(-3px);box-shadow:0 10px 28px #006bff20
+}
+.category-card .cat-icon{font-size:31px;color:#43aaff}
+.category-card strong{font-size:17px}
+.category-card small{font-size:12px;color:#b1c6e4}
+.products-toolbar{display:flex;gap:10px;max-width:720px;margin:0 0 18px}
+.products-toolbar input,.products-toolbar select{
+  min-width:0;padding:11px 13px;border:1px solid #29436b;
+  border-radius:10px;background:#0c1a32;color:white;outline:none
+}
+.products-toolbar input{flex:1}
+.products-toolbar select{width:175px}
+.products-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.product-card{
+  display:grid;grid-template-columns:34% 1fr;gap:16px;padding:12px;
+  border:1px solid #203e69;border-radius:18px;
+  background:linear-gradient(135deg,#102748,#0c1931);min-width:0
+}
+.product-cover{
+  min-height:170px;border-radius:13px;background:linear-gradient(145deg,#123f80,#10294d);
+  display:grid;place-items:center;overflow:hidden
+}
+.product-cover img{width:100%;height:100%;object-fit:cover}
+.product-placeholder{font-size:48px;color:#82caff}
+.product-content{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:4px 2px}
+.product-content .kind{font-size:11px;color:#7fc4ff;background:#103c78;border-radius:20px;padding:3px 9px}
+.product-content h3{font-size:18px;margin:8px 0 4px}
+.product-content p{font-size:12px;color:#b1c5e2;line-height:1.45;overflow-wrap:anywhere}
+.product-bottom{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:auto;padding-top:12px}
+.product-price{font-size:19px;font-weight:800;color:#43aaff;white-space:nowrap}
+.product-status{font-size:11px;color:#b7c8e2;border:1px solid #35547d;padding:7px 10px;border-radius:22px}
+.empty-products{
+  grid-column:1/-1;text-align:center;padding:35px 15px;background:#0d1b35;
+  border:1px solid #203e69;border-radius:14px;color:var(--muted)
+}
+.library{
+  margin:12px 5% 55px;padding:24px;border:1px solid #24549a;border-radius:21px;
+  background:radial-gradient(circle at 10% 50%,#087bff40,transparent 28%),
+  linear-gradient(110deg,#10284d,#0b1a35)
+}
+.library-inner{display:grid;grid-template-columns:170px 1fr auto;align-items:center;gap:22px}
+.library-art{font-size:100px;text-align:center;color:#66baff;filter:drop-shadow(0 0 17px #087bff)}
+.library h2{font-size:27px}
+.library p{font-size:14px;color:#c0d1eb;max-width:520px;margin:5px 0 14px}
+.library-tags{display:flex;flex-wrap:wrap;gap:8px}
+.library-tags span{padding:8px 12px;border-radius:30px;background:#142f56;color:#c6d9f4;font-size:12px}
+.library-link{
+  border:1px solid #168bff;background:transparent;color:white;
+  border-radius:30px;padding:11px 16px;white-space:nowrap
+}
+.about,.contact{padding:55px 7%;text-align:center;background:#091326;border-top:1px solid #1b3152}
+.about p,.contact p{color:var(--muted);max-width:700px;margin:10px auto}
+.contact-form{
+  max-width:650px;margin:25px auto 0;padding:23px;text-align:left;
+  background:#0d1b35;border:1px solid #233e68;border-radius:17px
+}
+.contact-form label{display:block;font-size:13px;color:#c7d7ed;margin:13px 0 6px}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;padding:12px;background:#071329;border:1px solid #34517e;
+  border-radius:9px;color:white;outline:none
+}
+.contact-form textarea{min-height:125px;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus,.contact-form select:focus{border-color:#168bff}
+.contact-submit{
+  width:100%;padding:13px;border:0;border-radius:9px;
+  background:linear-gradient(110deg,#087bff,#1552d5);
+  color:white;font-weight:bold;margin-top:17px
+}
+.contact-message{font-size:13px;margin-top:12px;min-height:20px;color:#9fc8ff}
+.honeypot{position:absolute;left:-9999px;opacity:0}
+footer{padding:30px 5%;border-top:1px solid #1c3152;background:#040916;color:#9eb1d0}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:25px;flex-wrap:wrap}
+.footer-brand strong{font-size:27px;color:#eaf2ff}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px}
+.footer-column{display:flex;flex-direction:column;gap:8px;font-size:13px}
+.footer-column strong{color:#eaf2ff;margin-bottom:4px}
+footer .copyright{text-align:center;border-top:1px solid #1c3152;margin-top:23px;padding-top:17px;font-size:12px}
+.modal-overlay{
+  display:none;position:fixed;inset:0;z-index:70;background:#000b;
+  align-items:center;justify-content:center;padding:18px
+}
+.modal-overlay.active{display:flex}
+.modal{
+  width:100%;max-width:420px;padding:23px;background:#10203c;
+  border:1px solid #34517e;border-radius:16px;box-shadow:0 20px 60px #000a
+}
+.modal h2{font-size:21px}
+.modal-desc{font-size:12px;color:var(--muted);margin:4px 0 17px}
+.modal label{display:block;margin:12px 0 5px;font-size:13px;color:#c7d7ed}
+.modal input{width:100%;padding:12px;background:#071329;border:1px solid #34517e;border-radius:8px;color:white;outline:none}
+.modal-buttons{display:flex;gap:10px;margin-top:18px}
+.modal-buttons button{flex:1;padding:11px;border:0;border-radius:8px;font-weight:bold}
+.save-btn{background:#087bff;color:white}
+.cancel-btn{background:#263c5e;color:white}
+.modal-message{min-height:18px;margin-top:10px;font-size:12px;color:#9fc8ff}
+@media(max-width:1050px){
+  nav{gap:12px}
+  .hero{grid-template-columns:1fr .7fr}
+  .category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  header{height:68px;padding:0 4%}
+  .logo{font-size:21px}
+  .menu-btn{display:grid}
+  .header-right{gap:8px}
+  .wallet-top{padding:6px 7px 6px 10px;gap:7px}
+  .wallet-top strong{font-size:12px}
+  nav{
+    display:none;position:absolute;left:0;right:0;top:68px;padding:17px 5%;
+    background:#09162c;border-bottom:1px solid #29436b;
+    flex-direction:column;align-items:flex-start
+  }
+  nav.active{display:flex}
+  .hero{padding:34px 5% 28px;grid-template-columns:1fr;min-height:auto}
+  .hero-art{min-height:130px}
+  .hero-art .book{font-size:85px}
+  .promo{margin:0 4% 25px;padding:18px;align-items:flex-start;flex-direction:column}
+  .promo h2{font-size:21px}
+  .promo-button{width:100%}
+  .section{padding:10px 4% 28px}
+  .section-title h2{font-size:23px}
+  .category-card{min-height:135px;padding:15px}
+  .products-grid{grid-template-columns:1fr}
+  .product-card{grid-template-columns:34% 1fr}
+  .product-cover{min-height:150px}
+  .library{margin:10px 4% 38px;padding:18px}
+  .library-inner{grid-template-columns:75px 1fr;gap:13px}
+  .library-art{font-size:62px}
+  .library h2{font-size:23px}
+  .library-link{grid-column:1/-1;width:100%}
+  .footer-top{justify-content:center;text-align:center}
+  .footer-links{justify-content:center}
+  .footer-column{align-items:center;width:100%}
+}
+@media(max-width:420px){
+  .logo{font-size:18px}
+  .header-right{gap:6px}
+  .icon-btn{display:none}
+  .profile-btn{width:34px;height:34px}
+  .wallet-top strong{font-size:11px}
+  .category-card strong{font-size:15px}
+  .category-card small{font-size:11px}
+  .products-toolbar{flex-direction:column}
+  .products-toolbar select{width:100%}
+  .product-content h3{font-size:16px}
+  .product-price{font-size:16px}
+  .product-status{padding:6px 7px}
+}
+</style>
+</head>
 
+<body>
 
-<button class="category-card" data-kind="other" onclick="location.href='alətlər.html'">
-    <span class="cat-icon">⚙</span>
-    <strong>Faydalı alətlər</strong>
-    <small>Kalkulyatorlar və faydalı funksiyalar</small>
-</button>
+<header>
+  <a href="#home" class="logo">VELTRIX <span>STORE</span></a>
 
+  <nav id="navigation">
+    <a href="#home" onclick="closeMenu()">Mağaza</a>
+    <a href="#library" onclick="closeMenu()">Kitabxanam</a>
+    <a href="ai.html" onclick="closeMenu()">VELTRIX AI</a>
+    <a href="#about" onclick="closeMenu()">Haqqımızda</a>
+    <a href="#contact" onclick="closeMenu()">Mesaj göndər</a>
+  </nav>
 
- </section>  
- <section class="section" id="products">  
-  <div class="section-title"><h2 id="productsHeading">Seçilmiş məhsullar</h2></div>  
-  <div class="products-toolbar">  
-   <input id="productSearch" type="search" placeholder="⌕ Məhsul axtar..." oninput="renderProducts()">  
-   <select id="sortProducts" onchange="renderProducts()"><option value="newest">Ən yenilər</option><option value="cheap">Əvvəlcə ucuz</option><option value="expensive">Əvvəlcə bahalı</option></select>  
-  </div>  
-  <div class="products-grid" id="productsGrid"><div class="empty-products">Məhsullar yüklənir...</div></div>  
- </section>  
- <section class="library" id="library">  
-  <div class="library-inner">  
-   <div class="library-art">📖</div>  
-   <div><h2>Kitabxanam</h2><p>Aldığın elektron kitablar, sınaqların nəticələri və digər məhsullar burada saxlanılır.</p><div class="library-tags"><span>📘 Elektron kitablar</span><span>✓ Sınaq nəticələri</span><span>◇ Rəqəmsal məhsullar</span></div></div>  
-   <button class="library-link" onclick="openLibrary()">Kitabxanama bax →</button>  
-  </div>  
- </section>  
- <section class="about" id="about"><h2>Haqqımızda</h2><p>VELTRIX — texnologiyanı, biliyi və rəqəmsal imkanları bir araya gətirən platformadır.</p><p><strong>VELTRIX — Think Beyond Limits.</strong></p></section>  
- <section class="contact" id="contact"><h2>Əlaqə</h2><p>VELTRIX ilə bağlı sual və təkliflərin üçün əlaqə məlumatları tezliklə burada yerləşdiriləcək.</p></section>  
-</main>  
-<footer><div class="footer-top"><div class="footer-brand"><strong>VELTRIX</strong><div>Think Beyond Limits.</div></div><div class="footer-links"><a href="#about">Haqqımızda</a><a href="#contact">Əlaqə</a><a href="#home">Yuxarı ↑</a></div></div><div class="copyright">VELTRIX © <span id="year"></span> — Bütün hüquqlar qorunur.</div></footer>  
-<input type="file" id="avatarInput" accept="image/*" hidden>  
-<div class="modal-overlay" id="settingsModal"><div class="modal"><h2>Profil parametrləri</h2><p class="modal-desc">Hesab məlumatlarını yenilə.</p><label for="usernameInput">Ad / İstifadəçi adı</label><input id="usernameInput" type="text" maxlength="30" placeholder="Adını daxil et"><div class="modal-buttons"><button class="cancel-btn" onclick="closeModal()">Bağla</button><button class="save-btn" onclick="saveUsername()">Yadda saxla</button></div><div class="modal-message" id="message"></div></div></div>  
-<div class="modal-overlay" id="passwordModal"><div class="modal"><h2>Şifrəni dəyiş</h2><p class="modal-desc">Yeni hesab şifrəsini daxil et.</p><label for="newPassword">Yeni şifrə</label><input id="newPassword" type="password" minlength="6" placeholder="Yeni şifrə"><label for="confirmPassword">Şifrəni təkrar yaz</label><input id="confirmPassword" type="password" minlength="6" placeholder="Şifrəni təkrar daxil et"><div class="modal-buttons"><button class="cancel-btn" onclick="closePasswordModal()">Bağla</button><button class="save-btn" onclick="changePassword()">Yadda saxla</button></div><div class="modal-message" id="passwordMessage"></div></div></div>  
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>  
-<script>  
-const SUPABASE_URL="https://yekcqqxgyrgreketnfez.supabase.co";  
-const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlla2NxcXhneXJncmVrZXRuZmV6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ4MjU3NzcsImV4cCI6MjExMDQwMTc3N30.OKTxQ7EDSMrB6KcHNJ0hi-4P5GSWgOKsg7ZO_LPhseM";  
-const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);  
-let currentUser=null,categoriesData=[],productsData=[],selectedStoreCategory="all";  function toggleMenu(){document.getElementById("navigation").classList.toggle("active")}
-function closeMenu(){document.getElementById("navigation").classList.remove("active")}
-function toggleProfile(e){e.stopPropagation();document.getElementById("profileDropdown").classList.toggle("active")}
-function closeProfile(){document.getElementById("profileDropdown").classList.remove("active")}
-document.addEventListener("click",e=>{const w=document.querySelector(".profile-wrap");if(w&&!w.contains(e.target))closeProfile()});
-function focusSearch(){document.getElementById("products").scrollIntoView({behavior:"smooth"});setTimeout(()=>document.getElementById("productSearch").focus(),350)}
-function openLibrary(){if(!currentUser){alert("Kitabxanaya baxmaq üçün əvvəlcə hesabına daxil ol.");location.href="account.html";return}alert("Kitabxana bölməsinin məlumat bazası növbəti mərhələdə qoşulacaq.")}
+  <div class="header-right">
+    <div class="wallet-top">
+      <span>▣</span>
+      <strong id="walletBalance">— kredit</strong>
+      <button class="plus-btn" onclick="buyCredits()" aria-label="Kredit al">+</button>
+    </div>
+
+    <button class="icon-btn" onclick="focusSearch()" aria-label="Axtar">⌕</button>
+
+    <div class="profile-wrap">
+      <button class="profile-btn" onclick="toggleProfile(event)" aria-label="Profil">
+        <span class="profile-avatar" id="headerAvatar">?</span>
+      </button>
+
+      <div class="profile-dropdown" id="profileDropdown">
+        <div class="profile-info">
+          <span class="profile-avatar" id="dropdownAvatar">?</span>
+          <div>
+            <strong id="dropdownName">Qonaq</strong>
+            <small id="dropdownEmail">Hesaba daxil olun</small>
+          </div>
+        </div>
+
+        <button class="profile-item" id="changePhotoBtn" onclick="chooseAvatar()">📷 Profil şəklini dəyiş</button>
+        <button class="profile-item" onclick="openSettings()">⚙️ Profil parametrləri</button>
+        <button class="profile-item" onclick="openPasswordSettings()">🔒 Şifrəni dəyiş</button>
+        <button class="profile-item danger" id="logoutBtn" onclick="logout()" style="display:none">↪ Hesabdan çıxış</button>
+        <a href="account.html" class="login-link" id="loginLink">Daxil ol / Qeydiyyat</a>
+      </div>
+    </div>
+
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Menyunu aç">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <section class="hero" id="home">
+    <div>
+      <div class="tag">DIGITAL MARKETPLACE</div>
+      <h1>Bilik və texnologiya bir <span>məkanda.</span></h1>
+      <p>Elektron kitablar, sınaqlar, faydalı alətlər və rəqəmsal məhsullar.</p>
+      <div class="hero-actions">
+        <a href="#products" class="action-btn action-primary">▣ Məhsullara bax →</a>
+        <a href="ai.html" class="action-btn action-secondary">✦ VELTRIX AI</a>
+      </div>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <div class="orbit"></div>
+      <span class="book">📖</span>
+      <span class="float f1">🎓</span>
+      <span class="float f2">▤</span>
+      <span class="float f3">⌘</span>
+    </div>
+  </section>
+
+  <section class="promo" id="discover">
+    <div>
+      <h2>✧ Yeni imkanları kəşf et!</h2>
+      <p>Balansını artır, yeni məhsulları kəşf et və VELTRIX dünyasından faydalan.</p>
+    </div>
+    <button class="promo-button" onclick="buyCredits()">Kəşf et →</button>
+  </section>
+
+  <section class="section" id="categories">
+    <div class="section-title"><h2>Kateqoriyalar</h2></div>
+
+    <div class="category-grid">
+
+      <button class="category-card" data-kind="books" onclick="selectStoreCategory('books',this)">
+        <span class="cat-icon">♧</span>
+        <strong>Elektron kitablar</strong>
+        <small>PDF və tədris materialları</small>
+      </button>
+
+      <button class="category-card" data-kind="dim" onclick="location.href='dim.html'">
+        <span class="cat-icon">♧</span>
+        <strong>DİM sınaqları</strong>
+        <small>Testlər və çalışmalar</small>
+      </button>
+
+      <button class="category-card" data-kind="psychology" onclick="location.href='psixologiya.html'">
+        <span class="cat-icon">◎</span>
+        <strong>Psixologiya</strong>
+        <small>Bilik və inkişaf</small>
+      </button>
+
+      <button class="category-card" data-kind="other" onclick="location.href='faydalıalətlər.html'">
+        <span class="cat-icon">⚙</span>
+        <strong>Faydalı alətlər</strong>
+        <small>Kalkulyatorlar və faydalı funksiyalar</small>
+      </button>
+
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="section-title">
+      <h2 id="productsHeading">Seçilmiş məhsullar</h2>
+    </div>
+
+    <div class="products-toolbar">
+      <input id="productSearch" type="search" placeholder="⌕ Məhsul axtar..." oninput="renderProducts()">
+      <select id="sortProducts" onchange="renderProducts()">
+        <option value="newest">Ən yenilər</option>
+        <option value="cheap">Əvvəlcə ucuz</option>
+        <option value="expensive">Əvvəlcə bahalı</option>
+      </select>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+      <div class="empty-products">Məhsullar yüklənir...</div>
+    </div>
+  </section>
+
+  <section class="library" id="library">
+    <div class="library-inner">
+      <div class="library-art">📖</div>
+      <div>
+        <h2>Kitabxanam</h2>
+        <p>Aldığın elektron kitablar, sınaqların nəticələri və digər məhsullar burada saxlanılır.</p>
+        <div class="library-tags">
+          <span>📘 Elektron kitablar</span>
+          <span>✓ Sınaq nəticələri</span>
+          <span>◇ Rəqəmsal məhsullar</span>
+        </div>
+      </div>
+      <button class="library-link" onclick="openLibrary()">Kitabxanama bax →</button>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>Haqqımızda</h2>
+    <p>VELTRIX — texnologiyanı, biliyi və rəqəmsal imkanları bir araya gətirən platformadır.</p>
+    <p><strong>VELTRIX — Think Beyond Limits.</strong></p>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>VELTRIX Support</h2>
+    <p>Sualların, təkliflərin və ya şikayətlərin varsa, bizə birbaşa sayt vasitəsilə mesaj göndər.</p>
+
+    <form class="contact-form" id="supportForm" onsubmit="sendSupportMessage(event)">
+      <label for="supportName">Adın</label>
+      <input id="supportName" type="text" maxlength="80" required placeholder="Adını daxil et">
+
+      <label for="supportEmail">E-poçt ünvanın</label>
+      <input id="supportEmail" type="email" maxlength="150" required placeholder="E-poçt ünvanını daxil et">
+
+      <label for="supportTopic">Müraciətin mövzusu</label>
+      <select id="supportTopic" required>
+        <option value="">Mövzu seç</option>
+        <option value="Texniki problem">Texniki problem</option>
+        <option value="Məhsul və kitablar">Məhsul və kitablar</option>
+        <option value="Hesab problemi">Hesab problemi</option>
+        <option value="Təklif">Təklif</option>
+        <option value="Şikayət">Şikayət</option>
+        <option value="Digər">Digər</option>
+      </select>
+
+      <label for="supportText">Mesajın</label>
+      <textarea id="supportText" maxlength="3000" minlength="10" required placeholder="Mesajını burada yaz..."></textarea>
+
+      <div class="honeypot" aria-hidden="true">
+        <label for="supportWebsite">Vebsayt</label>
+        <input id="supportWebsite" type="text" tabindex="-1" autocomplete="off">
+      </div>
+
+      <button class="contact-submit" id="supportSubmit" type="submit">Mesajı göndər →</button>
+      <div class="contact-message" id="supportMessage" aria-live="polite"></div>
+    </form>
+
+    <p style="font-size:12px;margin-top:17px">
+      Bu forma e-poçt göndərmir. Mesajın VELTRIX dəstək sisteminə qeydə alınır.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-top">
+
+    <div class="footer-brand">
+      <strong>VELTRIX</strong>
+      <div>Think Beyond Limits.</div>
+    </div>
+
+    <div class="footer-column">
+      <strong>Əlaqə</strong>
+      <a href="#contact">Sayt vasitəsilə mesaj göndər</a>
+      <span>E-poçt ilə əlaqə — ünvan əlavə ediləcək</span>
+    </div>
+
+    <div class="footer-column">
+      <strong>Hüquqi məlumatlar</strong>
+      <a href="privacy.html">Məxfilik siyasəti</a>
+      <a href="terms.html">İstifadə şərtləri</a>
+      <a href="cookies.html">Kukilər siyasəti</a>
+      <a href="digital-policy.html">Rəqəmsal məhsullar və geri ödəniş</a>
+    </div>
+
+    <div class="footer-column">
+      <strong>VELTRIX</strong>
+      <a href="#about">Haqqımızda</a>
+      <a href="#home">Yuxarı ↑</a>
+    </div>
+
+  </div>
+
+  <div class="copyright">
+    VELTRIX © <span id="year"></span> — Bütün hüquqlar qorunur.
+  </div>
+</footer>
+
+<input type="file" id="avatarInput" accept="image/*" hidden>
+
+<div class="modal-overlay" id="settingsModal">
+  <div class="modal">
+    <h2>Profil parametrləri</h2>
+    <p class="modal-desc">Hesab məlumatlarını yenilə.</p>
+    <label for="usernameInput">Ad / İstifadəçi adı</label>
+    <input id="usernameInput" type="text" maxlength="30" placeholder="Adını daxil et">
+    <div class="modal-buttons">
+      <button class="cancel-btn" onclick="closeModal()">Bağla</button>
+      <button class="save-btn" onclick="saveUsername()">Yadda saxla</button>
+    </div>
+    <div class="modal-message" id="message"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="passwordModal">
+  <div class="modal">
+    <h2>Şifrəni dəyiş</h2>
+    <p class="modal-desc">Yeni hesab şifrəsini daxil et.</p>
+    <label for="newPassword">Yeni şifrə</label>
+    <input id="newPassword" type="password" minlength="6" placeholder="Yeni şifrə">
+    <label for="confirmPassword">Şifrəni təkrar yaz</label>
+    <input id="confirmPassword" type="password" minlength="6" placeholder="Şifrəni təkrar daxil et">
+    <div class="modal-buttons">
+      <button class="cancel-btn" onclick="closePasswordModal()">Bağla</button>
+      <button class="save-btn" onclick="changePassword()">Yadda saxla</button>
+    </div>
+    <div class="modal-message" id="passwordMessage"></div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL="https://yekcqqxgyrgreketnfez.supabase.co";
+const SUPABASE_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlla2NxcXhneXJncmVrZXRuZmV6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQ4MjU3NzcsImV4cCI6MjExMDQwMTc3N30.OKTxQ7EDSMrB6KcHNJ0hi-4P5GSWgOKsg7ZO_LPhseM";
+
+const client=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+
+let currentUser=null;
+let categoriesData=[];
+let productsData=[];
+let selectedStoreCategory="all";
+
+function toggleMenu(){
+  document.getElementById("navigation").classList.toggle("active");
+}
+function closeMenu(){
+  document.getElementById("navigation").classList.remove("active");
+}
+function toggleProfile(e){
+  e.stopPropagation();
+  document.getElementById("profileDropdown").classList.toggle("active");
+}
+function closeProfile(){
+  document.getElementById("profileDropdown").classList.remove("active");
+}
+document.addEventListener("click",e=>{
+  const w=document.querySelector(".profile-wrap");
+  if(w&&!w.contains(e.target))closeProfile();
+});
+function focusSearch(){
+  document.getElementById("products").scrollIntoView({behavior:"smooth"});
+  setTimeout(()=>document.getElementById("productSearch").focus(),350);
+}
+
+function openLibrary(){
+  if(!currentUser){
+    alert("Kitabxanaya baxmaq üçün əvvəlcə hesabına daxil ol.");
+    location.href="account.html";
+    return;
+  }
+  alert("Kitabxana bölməsinin məlumat bazası növbəti mərhələdə qoşulacaq.");
+}
+
 function updateProfileUI(user){
-currentUser=user;
-const name=user?(user.user_metadata?.username||user.email?.split("@")[0]||"İstifadəçi"):"Qonaq";
-const email=user?.email||"Hesaba daxil olun",avatar=user?.user_metadata?.avatar_url||"";
-document.getElementById("dropdownName").textContent=name;document.getElementById("dropdownEmail").textContent=email;
-document.querySelectorAll("#headerAvatar,#dropdownAvatar").forEach(el=>{el.innerHTML="";if(avatar){const img=document.createElement("img");img.src=avatar;img.alt="Profil şəkli";el.appendChild(img)}else el.textContent=user?name.charAt(0).toUpperCase():"?"});
-document.getElementById("logoutBtn").style.display=user?"block":"none";
-document.getElementById("loginLink").style.display=user?"none":"block";
-document.getElementById("changePhotoBtn").style.display=user?"block":"none";
-if(user)refreshWallet();else document.getElementById("walletBalance").textContent="Giriş tələb olunur";
+  currentUser=user;
+  const name=user?(user.user_metadata?.username||user.email?.split("@")[0]||"İstifadəçi"):"Qonaq";
+  const email=user?.email||"Hesaba daxil olun";
+  const avatar=user?.user_metadata?.avatar_url||"";
+
+  document.getElementById("dropdownName").textContent=name;
+  document.getElementById("dropdownEmail").textContent=email;
+
+  document.querySelectorAll("#headerAvatar,#dropdownAvatar").forEach(el=>{
+    el.innerHTML="";
+    if(avatar){
+      const img=document.createElement("img");
+      img.src=avatar;
+      img.alt="Profil şəkli";
+      el.appendChild(img);
+    }else{
+      el.textContent=user?name.charAt(0).toUpperCase():"?";
+    }
+  });
+
+  document.getElementById("logoutBtn").style.display=user?"block":"none";
+  document.getElementById("loginLink").style.display=user?"none":"block";
+  document.getElementById("changePhotoBtn").style.display=user?"block":"none";
+
+  if(user)refreshWallet();
+  else document.getElementById("walletBalance").textContent="Giriş tələb olunur";
 }
-async function loadUser(){const {data,error}=await client.auth.getSession();if(error){console.error(error);return}updateProfileUI(data.session?.user||null)}
-client.auth.onAuthStateChange((_event,session)=>updateProfileUI(session?.user||null));
-function openSettings(){closeProfile();if(!currentUser){location.href="account.html";return}document.getElementById("usernameInput").value=currentUser.user_metadata?.username||"";document.getElementById("message").textContent="";document.getElementById("settingsModal").classList.add("active")}
-function closeModal(){document.getElementById("settingsModal").classList.remove("active")}
-async function saveUsername(){if(!currentUser)return;const username=document.getElementById("usernameInput").value.trim(),message=document.getElementById("message");if(username.length<2){message.textContent="Ad ən azı 2 simvol olmalıdır.";return}message.textContent="Yadda saxlanılır...";const {data,error}=await client.auth.updateUser({data:{username}});if(error){message.textContent="Xəta: "+error.message;return}updateProfileUI(data.user);message.textContent="Ad uğurla yeniləndi!"}
-function chooseAvatar(){closeProfile();document.getElementById("avatarInput").click()}
-document.getElementById("avatarInput").addEventListener("change",async function(){const file=this.files[0];if(!file||!currentUser)return;if(!file.type.startsWith("image/")){alert("Zəhmət olmasa şəkil faylı seç.");return}if(file.size>310241024){alert("Şəklin ölçüsü 3 MB-dan az olmalıdır.");return}const ext=(file.name.split(".").pop()||"jpg").toLowerCase(),path=currentUser.id+"/avatar."+ext;alert("Profil şəkli yüklənir...");const {error:uploadError}=await client.storage.from("avatars").upload(path,file,{upsert:true,contentType:file.type});if(uploadError){alert("Şəkil yüklənmədi: "+uploadError.message);this.value="";return}const {data:urlData}=client.storage.from("avatars").getPublicUrl(path);const {data,error}=await client.auth.updateUser({data:{avatar_url:urlData.publicUrl}});if(error)alert("Profil məlumatı yenilənmədi: "+error.message);else{updateProfileUI(data.user);alert("Profil şəkli yeniləndi!")}this.value=""});
-function openPasswordSettings(){closeProfile();if(!currentUser){location.href="account.html";return}document.getElementById("newPassword").value="";document.getElementById("confirmPassword").value="";document.getElementById("passwordMessage").textContent="";document.getElementById("passwordModal").classList.add("active")}
-function closePasswordModal(){document.getElementById("passwordModal").classList.remove("active")}
-async function changePassword(){const password=document.getElementById("newPassword").value,confirm=document.getElementById("confirmPassword").value,message=document.getElementById("passwordMessage");if(password.length<6){message.textContent="Şifrə ən azı 6 simvol olmalıdır.";return}if(password!==confirm){message.textContent="Şifrələr uyğun gəlmir.";return}message.textContent="Yenilənir...";const {error}=await client.auth.updateUser({password});if(error)message.textContent="Xəta: "+error.message;else{message.textContent="Şifrə uğurla dəyişdirildi!";document.getElementById("newPassword").value="";document.getElementById("confirmPassword").value=""}}
-async function refreshWallet(){const el=document.getElementById("walletBalance");if(!currentUser){el.textContent="Giriş tələb olunur";return}const {data,error}=await client.from("wallets").select("balance").eq("user_id",currentUser.id).maybeSingle();if(error){console.error("Balans xətası:",error.message);el.textContent="Balans yüklənmədi";return}el.textContent=(data?.balance??0)+" kredit"}
-function buyCredits(){if(!currentUser){alert("Kredit almaq üçün əvvəlcə hesabına daxil ol.");location.href="account.html";return}alert("Kredit alma sistemi hələ aktiv deyil. Ödəniş mexanizmi növbəti mərhələdə qurulacaq.")}
-async function loadCategories(){const {data,error}=await client.from("categories").select("id,name,slug").order("name");if(error){console.error("Kateqoriya xətası:",error.message);return}categoriesData=data||[]}
-async function loadProducts(){const grid=document.getElementById("productsGrid");const {data,error}=await client.from("products").select("id,title,description,price_credits,created_at,category_id,cover_url,categories(name)").eq("is_active",true).order("created_at",{ascending:false});if(error){console.error("Məhsul xətası:",error.message);grid.textContent="Məhsulları yükləmək mümkün olmadı.";return}productsData=data||[];renderProducts()}
-function selectStoreCategory(kind,button){selectedStoreCategory=kind;document.querySelectorAll(".category-card").forEach(x=>x.classList.remove("active"));button.classList.add("active");const labels={books:"Elektron kitablar",dim:"DİM sınaqları",psychology:"Psixologiya",other:"Digər məhsullar"};document.getElementById("productsHeading").textContent=labels[kind];document.getElementById("products").scrollIntoView({behavior:"smooth"});renderProducts()}
-function productMatchesKind(p,kind){const name=(p.categories?.name||"").toLocaleLowerCase("az"),title=(p.title||"").toLocaleLowerCase("az"),desc=(p.description||"").toLocaleLowerCase("az"),s=name+" "+title+" "+desc;if(kind==="books")return /kitab|book|pdf|dərs|material/.test(s);if(kind==="dim")return /dim|sınaq|sınaq|test|riyaziyyat|fizika|kimya/.test(s);if(kind==="psychology")return /psixolog|psych/.test(s);if(kind==="other")return !/kitab|book|pdf|dərs|material|dim|sınaq|test|riyaziyyat|fizika|kimya|psixolog/.test(s);return true}
+
+async function loadUser(){
+  const {data,error}=await client.auth.getSession();
+  if(error){
+    console.error(error);
+    return;
+  }
+  updateProfileUI(data.session?.user||null);
+}
+
+client.auth.onAuthStateChange((_event,session)=>{
+  updateProfileUI(session?.user||null);
+});
+
+function openSettings(){
+  closeProfile();
+  if(!currentUser){
+    location.href="account.html";
+    return;
+  }
+  document.getElementById("usernameInput").value=currentUser.user_metadata?.username||"";
+  document.getElementById("message").textContent="";
+  document.getElementById("settingsModal").classList.add("active");
+}
+function closeModal(){
+  document.getElementById("settingsModal").classList.remove("active");
+}
+
+async function saveUsername(){
+  if(!currentUser)return;
+
+  const username=document.getElementById("usernameInput").value.trim();
+  const message=document.getElementById("message");
+
+  if(username.length<2){
+    message.textContent="Ad ən azı 2 simvol olmalıdır.";
+    return;
+  }
+
+  message.textContent="Yadda saxlanılır...";
+
+  const {data,error}=await client.auth.updateUser({data:{username}});
+
+  if(error){
+    message.textContent="Xəta: "+error.message;
+    return;
+  }
+
+  updateProfileUI(data.user);
+  message.textContent="Ad uğurla yeniləndi!";
+}
+
+function chooseAvatar(){
+  closeProfile();
+  document.getElementById("avatarInput").click();
+}
+
+document.getElementById("avatarInput").addEventListener("change",async function(){
+  const file=this.files[0];
+  if(!file||!currentUser)return;
+
+  if(!file.type.startsWith("image/")){
+    alert("Zəhmət olmasa şəkil faylı seç.");
+    return;
+  }
+
+  if(file.size>3*1024*1024){
+    alert("Şəklin ölçüsü 3 MB-dan az olmalıdır.");
+    return;
+  }
+
+  const ext=(file.name.split(".").pop()||"jpg").toLowerCase();
+  const path=currentUser.id+"/avatar."+ext;
+
+  alert("Profil şəkli yüklənir...");
+
+  const {error:uploadError}=await client.storage.from("avatars").upload(
+    path,file,{upsert:true,contentType:file.type}
+  );
+
+  if(uploadError){
+    alert("Şəkil yüklənmədi: "+uploadError.message);
+    this.value="";
+    return;
+  }
+
+  const {data:urlData}=client.storage.from("avatars").getPublicUrl(path);
+
+  const {data,error}=await client.auth.updateUser({
+    data:{avatar_url:urlData.publicUrl}
+  });
+
+  if(error){
+    alert("Profil məlumatı yenilənmədi: "+error.message);
+  }else{
+    updateProfileUI(data.user);
+    alert("Profil şəkli yeniləndi!");
+  }
+
+  this.value="";
+});
+
+function openPasswordSettings(){
+  closeProfile();
+  if(!currentUser){
+    location.href="account.html";
+    return;
+  }
+  document.getElementById("newPassword").value="";
+  document.getElementById("confirmPassword").value="";
+  document.getElementById("passwordMessage").textContent="";
+  document.getElementById("passwordModal").classList.add("active");
+}
+function closePasswordModal(){
+  document.getElementById("passwordModal").classList.remove("active");
+}
+
+async function changePassword(){
+  const password=document.getElementById("newPassword").value;
+  const confirm=document.getElementById("confirmPassword").value;
+  const message=document.getElementById("passwordMessage");
+
+  if(password.length<6){
+    message.textContent="Şifrə ən azı 6 simvol olmalıdır.";
+    return;
+  }
+  if(password!==confirm){
+    message.textContent="Şifrələr uyğun gəlmir.";
+    return;
+  }
+
+  message.textContent="Yenilənir...";
+
+  const {error}=await client.auth.updateUser({password});
+
+  if(error){
+    message.textContent="Xəta: "+error.message;
+  }else{
+    message.textContent="Şifrə uğurla dəyişdirildi!";
+    document.getElementById("newPassword").value="";
+    document.getElementById("confirmPassword").value="";
+  }
+}
+
+async function refreshWallet(){
+  const el=document.getElementById("walletBalance");
+
+  if(!currentUser){
+    el.textContent="Giriş tələb olunur";
+    return;
+  }
+
+  const {data,error}=await client.from("wallets")
+    .select("balance")
+    .eq("user_id",currentUser.id)
+    .maybeSingle();
+
+  if(error){
+    console.error("Balans xətası:",error.message);
+    el.textContent="Balans yüklənmədi";
+    return;
+  }
+
+  el.textContent=(data?.balance??0)+" kredit";
+}
+
+function buyCredits(){
+  if(!currentUser){
+    alert("Kredit almaq üçün əvvəlcə hesabına daxil ol.");
+    location.href="account.html";
+    return;
+  }
+  alert("Kredit alma sistemi hələ aktiv deyil. Ödəniş mexanizmi növbəti mərhələdə qurulacaq.");
+}
+
+async function loadCategories(){
+  const {data,error}=await client.from("categories")
+    .select("id,name,slug")
+    .order("name");
+
+  if(error){
+    console.error("Kateqoriya xətası:",error.message);
+    return;
+  }
+  categoriesData=data||[];
+}
+
+async function loadProducts(){
+  const grid=document.getElementById("productsGrid");
+
+  const {data,error}=await client.from("products")
+    .select("id,title,description,price_credits,created_at,category_id,cover_url,categories(name)")
+    .eq("is_active",true)
+    .order("created_at",{ascending:false});
+
+  if(error){
+    console.error("Məhsul xətası:",error.message);
+    grid.textContent="Məhsulları yükləmək mümkün olmadı.";
+    return;
+  }
+
+  productsData=data||[];
+  renderProducts();
+}
+
+function selectStoreCategory(kind,button){
+  selectedStoreCategory=kind;
+
+  document.querySelectorAll(".category-card").forEach(x=>x.classList.remove("active"));
+  button.classList.add("active");
+
+  const labels={
+    books:"Elektron kitablar",
+    dim:"DİM sınaqları",
+    psychology:"Psixologiya",
+    other:"Faydalı alətlər"
+  };
+
+  document.getElementById("productsHeading").textContent=labels[kind]||"Məhsullar";
+  document.getElementById("products").scrollIntoView({behavior:"smooth"});
+  renderProducts();
+}
+
+function productMatchesKind(p,kind){
+  const name=(p.categories?.name||"").toLocaleLowerCase("az");
+  const title=(p.title||"").toLocaleLowerCase("az");
+  const desc=(p.description||"").toLocaleLowerCase("az");
+  const s=name+" "+title+" "+desc;
+
+  if(kind==="books")return /kitab|book|pdf|dərs|material/.test(s);
+  if(kind==="dim")return /dim|sınaq|test|riyaziyyat|fizika|kimya/.test(s);
+  if(kind==="psychology")return /psixolog|psych/.test(s);
+  if(kind==="other")return /alət|tool|kalkulyator/.test(s);
+  return true;
+}
+
 function renderProducts(){
-const grid=document.getElementById("productsGrid"),search=document.getElementById("productSearch").value.trim().toLocaleLowerCase("az"),sort=document.getElementById("sortProducts").value;
-let filtered=productsData.filter(p=>{const cat=p.categories?.name||"",hay=((p.title||"")+" "+(p.description||"")+" "+cat).toLocaleLowerCase("az");return hay.includes(search)&&(selectedStoreCategory==="all"||productMatchesKind(p,selectedStoreCategory))});
-if(sort==="cheap")filtered.sort((a,b)=>(a.price_credits||0)-(b.price_credits||0));else if(sort==="expensive")filtered.sort((a,b)=>(b.price_credits||0)-(a.price_credits||0));else filtered.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
-const shown=selectedStoreCategory==="all"?filtered.slice(0,4):filtered;
-grid.innerHTML="";
-if(!shown.length){const empty=document.createElement("div");empty.className="empty-products";empty.textContent=productsData.length?"Bu kateqoriyada uyğun məhsul tapılmadı.":"Hazırda mağazada məhsul yoxdur. Yeni məhsullar tezliklə əlavə ediləcək.";grid.appendChild(empty);return}
-shown.forEach(p=>{const card=document.createElement("article");card.className="product-card";const cover=document.createElement("div");cover.className="product-cover";if(p.cover_url){const img=document.createElement("img");img.src=p.cover_url;img.alt=p.title||"Məhsul";img.loading="lazy";img.onerror=()=>{cover.innerHTML='<span class="product-placeholder">▤</span>'};cover.appendChild(img)}else{const ph=document.createElement("span");ph.className="product-placeholder";ph.textContent=/kitab/i.test(p.title||"")?"▣":"▤";cover.appendChild(ph)}const content=document.createElement("div");content.className="product-content";const kind=document.createElement("span");kind.className="kind";kind.textContent=p.categories?.name||"Rəqəmsal məhsul";const title=document.createElement("h3");title.textContent=p.title||"Adsız məhsul";const desc=document.createElement("p");desc.textContent=p.description||"Məhsul haqqında məlumat.";const bottom=document.createElement("div");bottom.className="product-bottom";const price=document.createElement("span");price.className="product-price";price.textContent=(p.price_credits??0)+" kredit";const status=document.createElement("span");status.className="product-status";status.textContent="Tezliklə";bottom.append(price,status);content.append(kind,title,desc,bottom);card.append(cover,content);grid.appendChild(card)})
+  const grid=document.getElementById("productsGrid");
+  const search=document.getElementById("productSearch").value.trim().toLocaleLowerCase("az");
+  const sort=document.getElementById("sortProducts").value;
+
+  let filtered=productsData.filter(p=>{
+    const cat=p.categories?.name||"";
+    const hay=((p.title||"")+" "+(p.description||"")+" "+cat).toLocaleLowerCase("az");
+    return hay.includes(search)&&
+      (selectedStoreCategory==="all"||productMatchesKind(p,selectedStoreCategory));
+  });
+
+  if(sort==="cheap"){
+    filtered.sort((a,b)=>(a.price_credits||0)-(b.price_credits||0));
+  }else if(sort==="expensive"){
+    filtered.sort((a,b)=>(b.price_credits||0)-(a.price_credits||0));
+  }else{
+    filtered.sort((a,b)=>new Date(b.created_at)-new Date(a.created_at));
+  }
+
+  const shown=selectedStoreCategory==="all"?filtered.slice(0,4):filtered;
+  grid.innerHTML="";
+
+  if(!shown.length){
+    const empty=document.createElement("div");
+    empty.className="empty-products";
+    empty.textContent=productsData.length?
+      "Bu kateqoriyada uyğun məhsul tapılmadı.":
+      "Hazırda mağazada məhsul yoxdur. Yeni məhsullar tezliklə əlavə ediləcək.";
+    grid.appendChild(empty);
+    return;
+  }
+
+  shown.forEach(p=>{
+    const card=document.createElement("article");
+    card.className="product-card";
+
+    const cover=document.createElement("div");
+    cover.className="product-cover";
+
+    if(p.cover_url){
+      const img=document.createElement("img");
+      img.src=p.cover_url;
+      img.alt=p.title||"Məhsul";
+      img.loading="lazy";
+      img.onerror=()=>{
+        cover.innerHTML='<span class="product-placeholder">▤</span>';
+      };
+      cover.appendChild(img);
+    }else{
+      const ph=document.createElement("span");
+      ph.className="product-placeholder";
+      ph.textContent=/kitab/i.test(p.title||"")?"▣":"▤";
+      cover.appendChild(ph);
+    }
+
+    const content=document.createElement("div");
+    content.className="product-content";
+
+    const kind=document.createElement("span");
+    kind.className="kind";
+    kind.textContent=p.categories?.name||"Rəqəmsal məhsul";
+
+    const title=document.createElement("h3");
+    title.textContent=p.title||"Adsız məhsul";
+
+    const desc=document.createElement("p");
+    desc.textContent=p.description||"Məhsul haqqında məlumat.";
+
+    const bottom=document.createElement("div");
+    bottom.className="product-bottom";
+
+    const price=document.createElement("span");
+    price.className="product-price";
+    price.textContent=(p.price_credits??0)+" kredit";
+
+    const status=document.createElement("span");
+    status.className="product-status";
+    status.textContent="Tezliklə";
+
+    bottom.append(price,status);
+    content.append(kind,title,desc,bottom);
+    card.append(cover,content);
+    grid.appendChild(card);
+  });
 }
-async function logout(){if(!currentUser)return;const {error}=await client.auth.signOut();if(error){alert("Çıxış zamanı xəta: "+error.message);return}location.reload()}
+
+/* Sayt daxili dəstək müraciəti */
+async function sendSupportMessage(event){
+  event.preventDefault();
+
+  const form=document.getElementById("supportForm");
+  const button=document.getElementById("supportSubmit");
+  const message=document.getElementById("supportMessage");
+
+  if(document.getElementById("supportWebsite").value.trim()){
+    message.textContent="Müraciət qəbul edilmədi.";
+    return;
+  }
+
+  const name=document.getElementById("supportName").value.trim();
+  const email=document.getElementById("supportEmail").value.trim();
+  const topic=document.getElementById("supportTopic").value;
+  const content=document.getElementById("supportText").value.trim();
+
+  if(name.length<2||!email||!topic||content.length<10){
+    message.textContent="Zəhmət olmasa bütün xanaları düzgün doldur.";
+    return;
+  }
+
+  button.disabled=true;
+  button.textContent="Göndərilir...";
+  message.textContent="Müraciət göndərilir...";
+
+  const {error}=await client.from("support_messages").insert({
+    name:name,
+    email:email,
+    topic:topic,
+    message:content
+  });
+
+  button.disabled=false;
+  button.textContent="Mesajı göndər →";
+
+  if(error){
+    console.error("Dəstək müraciəti xətası:",error);
+    message.textContent="Mesaj göndərilmədi. Bir az sonra yenidən cəhd et.";
+    return;
+  }
+
+  form.reset();
+  message.textContent="Müraciətin uğurla qeydə alındı. Təşəkkür edirik!";
+}
+
+async function logout(){
+  if(!currentUser)return;
+
+  const {error}=await client.auth.signOut();
+
+  if(error){
+    alert("Çıxış zamanı xəta: "+error.message);
+    return;
+  }
+
+  location.reload();
+}
+
 document.getElementById("year").textContent=new Date().getFullYear();
-loadCategories();loadProducts();loadUser();
+
+loadCategories();
+loadProducts();
+loadUser();
 </script>
 
-</body>  
+</body>
 </html>
