@@ -1,0 +1,658 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b19">
+<meta name="description" content="VELTRIX Faydalı Alətlər — təhsil və gündəlik hesablamalar üçün praktik alətlər.">
+<title>Faydalı Alətlər | VELTRIX</title>
+
+<style>
+:root {
+  --bg:#050b19;
+  --panel:#0c162b;
+  --panel2:#111f38;
+  --border:#20314d;
+  --text:#edf3ff;
+  --muted:#91a1bb;
+  --blue:#4388ff;
+  --green:#20c997;
+}
+
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,sans-serif;
+  min-height:100vh;
+}
+
+header {
+  height:70px;
+  padding:0 7%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid var(--border);
+  background:#071020;
+}
+
+.logo {
+  font-size:23px;
+  font-weight:900;
+  letter-spacing:2px;
+}
+
+.logo span {color:var(--blue);}
+
+header a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+}
+
+header a:hover {color:white;}
+
+.container {
+  width:90%;
+  max-width:1100px;
+  margin:45px auto;
+}
+
+.hero {
+  margin-bottom:35px;
+}
+
+.hero small {
+  color:var(--blue);
+  font-weight:bold;
+  letter-spacing:2px;
+}
+
+.hero h1 {
+  font-size:36px;
+  margin:12px 0;
+}
+
+.hero p {
+  color:var(--muted);
+  line-height:1.7;
+  max-width:600px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+}
+
+.tool-card {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:22px;
+  transition:.2s;
+}
+
+.tool-card:hover {
+  border-color:var(--blue);
+  transform:translateY(-3px);
+}
+
+.tool-icon {
+  font-size:29px;
+  margin-bottom:15px;
+}
+
+.tool-card h3 {
+  font-size:18px;
+  margin-bottom:9px;
+}
+
+.tool-card p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.6;
+  min-height:40px;
+}
+
+.tool-card button {
+  width:100%;
+  margin-top:18px;
+  padding:12px;
+  border:0;
+  border-radius:9px;
+  background:var(--blue);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.tool-card button:hover {opacity:.85;}
+
+.tool-area {
+  display:none;
+  margin-top:30px;
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:17px;
+  padding:25px;
+}
+
+.tool-area.active {display:block;}
+
+.tool-area h2 {
+  margin-bottom:20px;
+}
+
+.field {
+  margin-bottom:15px;
+}
+
+.field label {
+  display:block;
+  color:var(--muted);
+  font-size:13px;
+  margin-bottom:7px;
+}
+
+input,select {
+  width:100%;
+  padding:13px;
+  background:#071020;
+  border:1px solid var(--border);
+  border-radius:9px;
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus,select:focus {
+  border-color:var(--blue);
+}
+
+.action {
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:9px;
+  background:var(--blue);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:8px;
+}
+
+.result {
+  background:var(--panel2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:16px;
+  margin-top:17px;
+  line-height:1.7;
+  color:var(--green);
+  display:none;
+}
+
+.back {
+  background:#1a2942;
+  margin-top:12px;
+}
+
+.timer {
+  font-size:55px;
+  font-weight:bold;
+  text-align:center;
+  margin:25px 0;
+  font-variant-numeric:tabular-nums;
+}
+
+.timer-buttons {
+  display:flex;
+  gap:10px;
+}
+
+.timer-buttons button {
+  flex:1;
+  padding:12px;
+  border:0;
+  border-radius:9px;
+  background:var(--blue);
+  color:white;
+  cursor:pointer;
+}
+
+footer {
+  border-top:1px solid var(--border);
+  padding:25px 7%;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+  margin-top:60px;
+}
+
+@media(max-width:600px) {
+  .hero h1 {font-size:29px;}
+  .container {margin:30px auto;}
+  .tool-area {padding:18px;}
+  .timer {font-size:45px;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">VELTRIX<span>.</span></div>
+  <a href="index.html">← Mağazaya qayıt</a>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <small>VELTRIX TOOLS</small>
+    <h1>Faydalı Alətlər</h1>
+    <p>
+      Təhsilini planlaşdır, hesablamalarını apar və vaxtına nəzarət et.
+      Lazım olan aləti seç və istifadə etməyə başla.
+    </p>
+  </section>
+
+  <section class="grid">
+
+    <div class="tool-card">
+      <div class="tool-icon">📊</div>
+      <h3>DİM bal hesablayıcı</h3>
+      <p>Düzgün, səhv və boş cavablarına əsasən nəticəni hesabla.</p>
+      <button onclick="openTool('dim')">İstifadə et</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">％</div>
+      <h3>Faiz kalkulyatoru</h3>
+      <p>Ədədin faizini və bir ədədin digərinə nisbətini hesabla.</p>
+      <button onclick="openTool('percent')">İstifadə et</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">🎓</div>
+      <h3>Orta bal kalkulyatoru</h3>
+      <p>Qiymətlərinin ədədi ortasını asanlıqla tap.</p>
+      <button onclick="openTool('average')">İstifadə et</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">⏱️</div>
+      <h3>Pomodoro taymeri</h3>
+      <p>Dərs və fasilə vaxtını idarə et, diqqətini qoru.</p>
+      <button onclick="openTool('pomodoro')">İstifadə et</button>
+    </div>
+
+    <div class="tool-card">
+      <div class="tool-icon">📐</div>
+      <h3>Vahid çevirici</h3>
+      <p>Uzunluq, çəki və temperatur vahidlərini çevir.</p>
+      <button onclick="openTool('convert')">İstifadə et</button>
+    </div>
+
+  </section>
+
+  <!-- DIM -->
+  <section class="tool-area" id="dim">
+    <h2>📊 DİM bal hesablayıcı</h2>
+
+    <div class="field">
+      <label>Sual sayı</label>
+      <input type="number" id="dimTotal" value="25" min="1">
+    </div>
+
+    <div class="field">
+      <label>Düzgün cavab sayı</label>
+      <input type="number" id="dimCorrect" value="13" min="0">
+    </div>
+
+    <div class="field">
+      <label>Səhv cavab sayı</label>
+      <input type="number" id="dimWrong" value="7" min="0">
+    </div>
+
+    <div class="field">
+      <label>Bir səhvin apardığı düzgün cavab sayı</label>
+      <input type="number" id="dimPenalty" value="0.25" min="0" step="0.05">
+    </div>
+
+    <div class="field">
+      <label>Maksimum bal</label>
+      <input type="number" id="dimMax" value="100" min="1">
+    </div>
+
+    <button class="action" onclick="calculateDim()">Balı hesabla</button>
+    <div class="result" id="dimResult"></div>
+    <button class="action back" onclick="closeTool()">Geri</button>
+  </section>
+
+  <!-- PERCENT -->
+  <section class="tool-area" id="percent">
+    <h2>％ Faiz kalkulyatoru</h2>
+
+    <div class="field">
+      <label>Ədəd</label>
+      <input type="number" id="percentNumber" placeholder="Məsələn: 250">
+    </div>
+
+    <div class="field">
+      <label>Faiz (%)</label>
+      <input type="number" id="percentValue" placeholder="Məsələn: 20">
+    </div>
+
+    <button class="action" onclick="calculatePercent()">Hesabla</button>
+    <div class="result" id="percentResult"></div>
+    <button class="action back" onclick="closeTool()">Geri</button>
+  </section>
+
+  <!-- AVERAGE -->
+  <section class="tool-area" id="average">
+    <h2>🎓 Orta bal kalkulyatoru</h2>
+
+    <div class="field">
+      <label>Qiymətləri vergül ilə daxil et</label>
+      <input type="text" id="averageValues" placeholder="Məsələn: 80, 90, 75, 100">
+    </div>
+
+    <button class="action" onclick="calculateAverage()">Ortalamanı hesabla</button>
+    <div class="result" id="averageResult"></div>
+    <button class="action back" onclick="closeTool()">Geri</button>
+  </section>
+
+  <!-- POMODORO -->
+  <section class="tool-area" id="pomodoro">
+    <h2>⏱️ Pomodoro taymeri</h2>
+
+    <div class="field">
+      <label>Dərs müddəti (dəqiqə)</label>
+      <input type="number" id="studyMinutes" value="25" min="1">
+    </div>
+
+    <div class="field">
+      <label>Fasilə müddəti (dəqiqə)</label>
+      <input type="number" id="breakMinutes" value="5" min="1">
+    </div>
+
+    <div class="timer" id="timerDisplay">25:00</div>
+
+    <div class="timer-buttons">
+      <button onclick="startTimer()">Başlat</button>
+      <button onclick="pauseTimer()">Dayandır</button>
+      <button onclick="resetTimer()">Sıfırla</button>
+    </div>
+
+    <button class="action back" onclick="closeTool()">Geri</button>
+  </section>
+
+  <!-- CONVERTER -->
+  <section class="tool-area" id="convert">
+    <h2>📐 Vahid çevirici</h2>
+
+    <div class="field">
+      <label>Çevirmə növü</label>
+      <select id="convertType" onchange="updateUnits()">
+        <option value="length">Uzunluq</option>
+        <option value="weight">Çəki</option>
+        <option value="temperature">Temperatur</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label>Dəyər</label>
+      <input type="number" id="convertValue" placeholder="Dəyəri daxil et">
+    </div>
+
+    <div class="field">
+      <label>Başlanğıc vahid</label>
+      <select id="fromUnit"></select>
+    </div>
+
+    <div class="field">
+      <label>Hədəf vahid</label>
+      <select id="toUnit"></select>
+    </div>
+
+    <button class="action" onclick="convertUnits()">Çevir</button>
+    <div class="result" id="convertResult"></div>
+    <button class="action back" onclick="closeTool()">Geri</button>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 VELTRIX — Think Beyond Limits
+</footer>
+
+<script>
+let timerInterval = null;
+let remainingSeconds = 25 * 60;
+
+function openTool(id) {
+  document.querySelectorAll('.tool-area').forEach(el => {
+    el.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+  document.getElementById(id).scrollIntoView({
+    behavior:'smooth',
+    block:'start'
+  });
+
+  if(id === 'convert') updateUnits();
+}
+
+function closeTool() {
+  document.querySelectorAll('.tool-area').forEach(el => {
+    el.classList.remove('active');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function showResult(id,text) {
+  const el = document.getElementById(id);
+  el.style.display = 'block';
+  el.innerHTML = text;
+}
+
+function calculateDim() {
+  const total = Number(document.getElementById('dimTotal').value);
+  const correct = Number(document.getElementById('dimCorrect').value);
+  const wrong = Number(document.getElementById('dimWrong').value);
+  const penalty = Number(document.getElementById('dimPenalty').value);
+  const max = Number(document.getElementById('dimMax').value);
+
+  if(!Number.isInteger(total) || total < 1 ||
+     !Number.isInteger(correct) || correct < 0 ||
+     !Number.isInteger(wrong) || wrong < 0 ||
+     penalty < 0 || max <= 0 ||
+     correct + wrong > total) {
+    alert('Daxil etdiyin məlumatları yoxla.');
+    return;
+  }
+
+  const blank = total - correct - wrong;
+  const net = Math.max(0, correct - wrong * penalty);
+  const score = net / total * max;
+
+  showResult('dimResult',
+    `Düzgün: ${correct}<br>
+     Səhv: ${wrong}<br>
+     Boş: ${blank}<br>
+     Net: ${net.toFixed(2)}<br>
+     <strong>Hesablanan bal: ${score.toFixed(2)}</strong>`
+  );
+}
+
+function calculatePercent() {
+  const number = Number(document.getElementById('percentNumber').value);
+  const percent = Number(document.getElementById('percentValue').value);
+
+  if(!Number.isFinite(number) || !Number.isFinite(percent) ||
+     document.getElementById('percentNumber').value === '' ||
+     document.getElementById('percentValue').value === '') {
+    alert('Düzgün dəyərlər daxil et.');
+    return;
+  }
+
+  const result = number * percent / 100;
+
+  showResult('percentResult',
+    `${number} ədədinin ${percent}%-i:<br>
+     <strong>${result.toFixed(4)}</strong>`
+  );
+}
+
+function calculateAverage() {
+  const raw = document.getElementById('averageValues').value;
+
+  const values = raw.split(',')
+    .map(v => Number(v.trim()));
+
+  if(!raw.trim() || values.some(v => !Number.isFinite(v))) {
+    alert('Qiymətləri vergül ilə düzgün daxil et.');
+    return;
+  }
+
+  const average = values.reduce((a,b) => a+b,0) / values.length;
+
+  showResult('averageResult',
+    `Qiymət sayı: ${values.length}<br>
+     <strong>Orta bal: ${average.toFixed(2)}</strong>`
+  );
+}
+
+function updateTimerDisplay() {
+  const min = Math.floor(remainingSeconds / 60);
+  const sec = remainingSeconds % 60;
+
+  document.getElementById('timerDisplay').textContent =
+    String(min).padStart(2,'0') + ':' +
+    String(sec).padStart(2,'0');
+}
+
+function startTimer() {
+  if(timerInterval) return;
+
+  if(remainingSeconds <= 0) resetTimer();
+
+  timerInterval = setInterval(() => {
+    remainingSeconds--;
+    updateTimerDisplay();
+
+    if(remainingSeconds <= 0) {
+      clearInterval(timerInterval);
+      timerInterval = null;
+      alert('Vaxt tamamlandı!');
+    }
+  },1000);
+}
+
+function pauseTimer() {
+  clearInterval(timerInterval);
+  timerInterval = null;
+}
+
+function resetTimer() {
+  pauseTimer();
+
+  const minutes = Number(
+    document.getElementById('studyMinutes').value
+  );
+
+  remainingSeconds = Math.max(1,minutes) * 60;
+  updateTimerDisplay();
+}
+
+document.getElementById('studyMinutes').addEventListener('change',resetTimer);
+
+const units = {
+  length:{
+    m:1,
+    km:1000,
+    cm:0.01,
+    mm:0.001
+  },
+  weight:{
+    kg:1,
+    g:0.001,
+    mg:0.000001,
+    ton:1000
+  }
+};
+
+function updateUnits() {
+  const type = document.getElementById('convertType').value;
+  const from = document.getElementById('fromUnit');
+  const to = document.getElementById('toUnit');
+
+  let options;
+
+  if(type === 'length') {
+    options = [['m','Metr'],['km','Kilometr'],['cm','Santimetr'],['mm','Millimetr']];
+  } else if(type === 'weight') {
+    options = [['kg','Kiloqram'],['g','Qram'],['mg','Miliqram'],['ton','Ton']];
+  } else {
+    options = [['C','Selsi'],['F','Farenheyt'],['K','Kelvin']];
+  }
+
+  from.innerHTML = '';
+  to.innerHTML = '';
+
+  options.forEach(([value,label]) => {
+    from.add(new Option(label,value));
+    to.add(new Option(label,value));
+  });
+
+  to.selectedIndex = 1;
+}
+
+function convertUnits() {
+  const type = document.getElementById('convertType').value;
+  const value = Number(document.getElementById('convertValue').value);
+  const from = document.getElementById('fromUnit').value;
+  const to = document.getElementById('toUnit').value;
+
+  if(document.getElementById('convertValue').value === '' ||
+     !Number.isFinite(value)) {
+    alert('Düzgün dəyər daxil et.');
+    return;
+  }
+
+  let result;
+
+  if(type === 'temperature') {
+    let celsius;
+
+    if(from === 'C') celsius = value;
+    if(from === 'F') celsius = (value - 32) * 5/9;
+    if(from === 'K') celsius = value - 273.15;
+
+    if(to === 'C') result = celsius;
+    if(to === 'F') result = celsius * 9/5 + 32;
+    if(to === 'K') result = celsius + 273.15;
+  } else {
+    result = value * units[type][from] / units[type][to];
+  }
+
+  showResult('convertResult',
+    `<strong>Nəticə: ${result.toFixed(6)}</strong> ${to}`
+  );
+}
+
+updateUnits();
+updateTimerDisplay();
+</script>
+
+</body>
+</html>
